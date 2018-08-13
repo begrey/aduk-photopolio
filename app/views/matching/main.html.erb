@@ -1,0 +1,46 @@
+<style>
+    div{text-align:center; margin:30px;}
+</style>
+
+<% if @my_cha == nil%>
+<h2>내 정보 먼저 입력해주세영 </h2> <a href="/mypage/input">정보 입력하러 가기</a>
+<% else %>
+<div class="container">
+    
+    
+    <h2>덕메 찾기  <span class="glyphicon glyphicon-search"></span></h2>
+    
+    <div  class="container" style="border:3px #D8BFD8 solid; width:800px;border-radius:10px;padding:10px">
+         <h4>원하는 정보 입력</h4>
+         
+         <form action="/matching/list" method="post" enctype="multipart/form-data">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    
+            <strong>성별</strong> <br>  
+            <input type="radio" name="sex" value="both" /> 둘 다  &nbsp;<input type="radio" name="sex" value="female" checked="checked"/> 여자 &nbsp;<input type="radio" name="sex" value="male" /> 남자 <br><br>
+            
+            <strong>나이</strong> <br> <input name="age1" type="text"> ~  <input name="age2" type="text"><br><br>
+        
+            <button type="submit" class="btn btn-default">찾기</button>
+        </form>
+    </div>
+    
+  </form>
+    </div>
+
+
+
+<hr>
+test용으로 정보 불러옴
+<% @modu.each do |z| %>
+    아이디:  <%= z.user_id%>
+    성격 : <%= z.character%>&nbsp;
+    출생년도 : <%= User.find_by(id: z.user_id).birthyear%>
+    관심 : <%= User.find_by(id: z.user_id).interest%>&nbsp;
+    <br>
+<% end %>
+
+<hr>
+
+</div>
+<%end%>

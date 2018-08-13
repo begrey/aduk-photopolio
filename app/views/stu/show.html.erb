@@ -1,0 +1,26 @@
+<center>
+<div class="image">
+ <img src="/assets/dd.png" width="1024" height="auto"/>
+        <div class="text">
+            <img src="/<%= @stu.country %>.png" width="100" height="auto">
+            <h1><%= @stu.writer %>님이 스터디원을 모집합니다</h1>
+            <h3><span class="glyphicon glyphicon-volume-up"></span> &nbsp; <%= @stu.title %></h3>
+            <br>
+            <h5><%= @stu.content %></h5>
+            
+            <div class="app">
+                <% if current_user.name == @stu.writer %>
+                    <a href="/stuapp/index/<%= @stu.id %>"><img src="/openstuapp.png"></a>
+                <% else %>
+                    <% if current_user.is_stuapp?(@stu) %>
+                        <a href="/stuapp/appshow//<%= @stu.id %>"><img src="/stuappok.png"></a>
+                    <% else %>
+                        <a href="/stuapp/new/<%= @stu.id %>"><img src="/stuapp.png"></a>
+                    <% end %>
+                <% end %>
+        
+            </div>
+        </div>
+</div>
+</center>
+

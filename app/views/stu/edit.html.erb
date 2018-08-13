@@ -1,0 +1,23 @@
+<h1>스터디 그룹 수정</h1>
+
+<form action="/stu/update/<%=@stu.id%>" method="post" enctype="multipart/form-data">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    
+    <h2>COUNTRY</h2>
+    <select class="form-control" name='country'>
+                  <option value='china' selected>중국</option>
+                  <option value='ppap' selected>파푸아뉴기니</option>
+                  <option value='japan'>일본</option>
+                  <option value='usa'>미국</option>
+                  <option value='arab'>아랍에미레이트</option>
+                  <option value='nag'>남아프리카공화국</option>
+                  <option value='mongo'>몽골</option>
+    </select><br>
+    <h2>TITLE</h2>
+    <input type="text" class="form-control" id="title" name="title" value="<%=@stu.title%>">
+    <h2>CONTENT</h2>
+    <input type="text" class="form-control" id="content" name="content" value="<%=@stu.content%>">
+    
+    <button type="submit" class="btn btn-default">수정</button>
+                  
+</form>

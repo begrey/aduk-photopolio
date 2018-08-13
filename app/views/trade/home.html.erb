@@ -1,0 +1,66 @@
+<style>
+    tr {border-bottom:1px gray solid;}
+     td {padding:20px}
+</style>
+
+
+
+<div class="container" >
+    <center>
+    <H2>교환 공구 게시판 게시글 목록</H2></center>
+  <br><br>
+  <center>
+
+<ul class="nav nav-pills nav-justified">
+  <li class="active"><a data-toggle="pill" href="#home">ALL</a></li>
+  <li><a data-toggle="pill" href="#menu1">교환</a></li>
+  <li><a data-toggle="pill" href="#menu2">공구</a></li>
+</ul>
+ <br><br>
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <table width="1000" >
+    <%@posts.each do |x|%>
+    <tr>
+    <td><%= x.category %></td>
+    <td width="600"><a href="/trade/index/<%=x.id%>"> <%=x.title%> </a></td>
+    <td><%= x.user_id%></td>
+    <td><%= (x.created_at + 32400 ).strftime "%Y-%m-%d %H:%M" %></td>
+    </tr>
+    <%end%>
+    </table>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <table width="1000" >
+    <%@na.each do |x|%>
+    <tr>
+    <td><%= x.category %></td>
+    <td width="600"><a href="/trade/index/<%=x.id%>"> <%=x.title%> </a></td>
+    <td><%= x.user_id%></td>
+    <td><%= (x.created_at + 32400 ).strftime "%Y-%m-%d %H:%M" %></td>
+    </tr>
+    <%end%>
+    </table>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    <table width="1000" >
+    <%@gong.each do |x|%>
+    <tr>
+    <td><%= x.category %></td>
+    <td width="600"><a href="/trade/index/<%=x.id%>"> <%=x.title%> </a></td>
+    <td><%= x.user_id%></td>
+    <td><%= (x.created_at + 32400 ).strftime "%Y-%m-%d %H:%M" %></td>
+    </tr>
+    <%end%>
+    </table>
+  </div>
+</div>
+
+  
+  
+  </center>
+  <br><br>
+<div style="float:right;">
+     <a href="/trade/new"><span class="glyphicon glyphicon-plus"></span>새 글</a>
+  </div>
+</div>

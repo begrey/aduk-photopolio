@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua|Gothic+A1|Gaegu" rel="stylesheet">
+  <title>어덕나덕٩( 'ω' )و</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    function showHide(id) {
+       var obj = document.getElementById(id);
+       if (obj.style.display == 'none')
+           obj.style.display = 'block';
+       else
+           obj.style.display = 'none';
+    }
+</script>
+</head>
+
+
+<body align="center" style="font-family: 'Jua', sans-serif;overflow:scroll;">
+    <br>
+  	<!--네비게이션 바-->
+ <img id="Image-Maps-Com-image" src="/assets/nono.png" border="0" width="1500" height="400" usemap="#image-maps" />
+<map name="image-maps" id="ImageMapsCom-image-maps">
+<area href="#w" shape="rect" coords="49,324,268,376" style="outline:none;" target="_self"     />
+<area href="/home/index" shape="rect" coords="295,326,555,378" style="outline:none;" target="_self"     />
+<area href="/#" shape="rect" coords="580,311,921,392" style="outline:none;" target="_self"     />
+<area href="/stu/index" shape="rect" coords="941,320,1082,372" style="outline:none;" target="_self"     />
+<area href="/trade/home" shape="rect" coords="1103,324,1266,376" style="outline:none;" target="_self"     />
+<area href="/matching/main" shape="rect" coords="1291,324,1457,376" style="outline:none;" target="_self"     />
+</map>
+
+<!--회원가입, 로그인, 마이페이지, 로그아웃-->
+<div class="dropdown">
+  <%if user_signed_in?%>
+      <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+      <%= current_user.name %>님, 환영합니덕!
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+      <li role="presentation"><%=link_to 'Logout', destroy_user_session_path, method: 'delete', role: 'menuitem', tabindex: '-1'%></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="/mypage/mypage">My Page</a></li>
+      <li role="presentation" class="divider"></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" >어덕나덕</a></li>
+    </ul>
+    
+      <%else%>
+        <%=link_to 'Login', new_user_session_path,class: 'btn btn-default'%>&nbsp;&nbsp;&nbsp;
+        <%=link_to 'Sign Up', new_user_registration_path ,class: 'btn btn-default'%>
+      <%end%>
+  
+</div>
+  
+  <%= yield %>
+  <br>
+ 
+</body>
+</html>

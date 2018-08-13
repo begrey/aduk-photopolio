@@ -1,0 +1,2 @@
+module MateapplyHelper
+end

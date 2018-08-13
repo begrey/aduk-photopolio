@@ -1,0 +1,35 @@
+<style>
+table {
+    width:700px;
+}
+tr {
+    border-bottom : 1px black solid;
+    padding : 20px;
+}
+
+td {
+    padding : 15px;
+}
+    
+</style>
+
+<div class="container">
+<br><br>
+<h1>받은 신청서 ( <%= @app.count %> )</h1><hr>
+<table align="center">
+    <tr>
+        <td>작성자</td>
+        <td>제목</td>
+        <td>내용</td>
+    </tr>
+    <% @app.each do |a| %>
+    <tr onClick = "location.href='/'">
+        <td> <%=a.writer%></td>
+        <td> <%=a.title%></td>
+        <td> <%=a.content%></td>
+    </tr>
+    <% end %>
+</table>
+
+<a href="/stu/show/<%=params[:stu_id]%>" style="color:#B0C4DE;float:left"><h3><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;작성글으로</h2></a><br>
+</div>

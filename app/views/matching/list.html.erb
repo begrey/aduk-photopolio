@@ -1,0 +1,78 @@
+<style>
+    div{text-align:center; margin:30px;}
+    table{width:900px}
+    .gbg{background-color:#D8BFD8;}
+    .bb{border-bottom:1px black solid;}
+    th, td{padding:20px;text-align:center;}
+    .btn-img{width:90px;height:auto;background:rgba( 255, 255, 255, 0.5 );}
+    .btn{background:rgba( 255, 255, 255, 0.5 );}
+</style>
+
+
+<div class="container">
+        <div  class="container" style="border:1.5px gray solid; width:700px;border-radius:10px;padding:10px">
+            <h4>나의 정보</h4><br>
+            지역 : <%= current_user.region%> &nbsp; 성별 : <%= current_user.sex%> &nbsp; 나이 : <%= @me_age + 1 %> &nbsp; 성격 : <%= current_user.character%> &nbsp; 관심 분야 : <%= current_user.interest%><br>
+        </div>
+        
+        <table align="center">
+            <tr class="gbg">
+                <th> ID </th>
+                <th> SEX </th>
+                <th> AGE </th>
+                <th> CHARACTER </th>
+                <th> &nbsp; </th>
+            </tr>
+            
+            <% @result.each do |x|%>
+            <tr class="bb">    
+                <% if x.id != current_user.id %>
+        
+                    <td> <%= x.id %> </td>
+                    <td> <%= x.sex %> </td>
+                    <td> 
+                        <% time = Time.now %>
+                        <%= time.year - x.birthyear + 1%> 
+                    </td>
+                    <td> <%= Character.find(x.id).character%> </td>
+                    <td>
+                        <% if current_user.is_mateapply? (x) %> <!--내가 이사람한테 친구 신청 보냈을 때, -->
+                            <% if Mateapply.find_by(user_id: current_user.id, partner: x.id).matching %>
+                                <img src="/assets/emee.png" width="90" height="auto"/>
+                            <% else %>
+                                 <form action='/mateapply/<%= x.id%>/apply' method='post'>
+                                      <button class="btn" id="btn" type="submit"><img class="btn-img" src="/assets/waitapp.png"></button>
+                                 </form>
+                            <% end %>
+  
+                        <% else %>
+                           <% if x.is_mateapply? (@me) %> <!--이 사람이 나한테 친구 신청했을 때 -->
+                               <% if Mateapply.find_by(user_id: x.id, partner: current_user.id).matching %>
+                                   <img src="/assets/emee.png" width="90" height="auto"/>
+                               <% else %>
+                                   <form action='/mateapply/<%= x.id%>/accept/<%= Mateapply.find_by(user_id: x.id, partner: current_user.id).id%>' method='post'>
+                                      <button class="btn" id="btn" type="submit"><img class="btn-img" src="/assets/okapp.png"></button>  
+                                   </form>
+                               <% end %>
+                          <% else %>
+                              <form action='/mateapply/<%= x.id%>/apply' method='post'>
+                                  <button class="btn" id="btn" type="submit"><img class="btn-img" src="/assets/mapp.png"></button>  
+                              </form>
+                          <% end %>
+  
+                       <% end %>
+        
+                       </td>
+                    
+                 <%end%>
+    
+        <%end%>
+
+         </tr>  
+        </table>
+</div>
+
+
+
+
+<<<<br>

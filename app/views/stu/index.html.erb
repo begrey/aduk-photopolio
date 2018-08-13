@@ -1,0 +1,240 @@
+<script>
+   $(".hover").mouseleave(
+  function () {
+    $(this).removeClass("hover");
+  }
+);
+ </script>
+<style>
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,500,900);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+figure.snip1382 {
+  font-family: 'Jua', Arial, sans-serif;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  width:350px;
+  height:250px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+}
+figure.snip1382 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+figure.snip1382 img {
+  max-width: 100%;
+}
+figure.snip1382:after,
+figure.snip1382:before,
+figure.snip1382 figcaption:after,
+figure.snip1382 figcaption:before {
+  background: #0a0a0a;
+  height: 25%;
+  position: absolute;
+  content: '';
+  opacity: 0;
+  -webkit-transition: all 0.35s steps(4);
+  transition: all 0.35s steps(4);
+  z-index: 1;
+  left: 50%;
+  right: 50%;
+}
+figure.snip1382:before {
+  top: 0;
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+}
+figure.snip1382:after {
+  top: 25%;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+figure.snip1382 figcaption:before {
+  top: 50%;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+  z-index: -1;
+}
+figure.snip1382 figcaption:after {
+  top: 75%;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+  z-index: -1;
+}
+figure.snip1382 figcaption {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 30px;
+}
+figure.snip1382 h2,
+figure.snip1382 p,
+figure.snip1382 .icons {
+  margin: 0;
+  width: 100%;
+  opacity: 0;
+}
+figure.snip1382 h2 {
+  font-weight: 900;
+  text-transform: uppercase;
+}
+figure.snip1382 p {
+  font-weight: 300;
+}
+figure.snip1382 .icons {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+}
+figure.snip1382 i {
+  padding: 0px 10px;
+  display: inline-block;
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+  opacity: 0.8;
+  text-decoration: none;
+}
+figure.snip1382 i:hover {
+  opacity: 1;
+}
+figure.snip1382:hover:after,
+figure.snip1382.hover:after,
+figure.snip1382:hover:before,
+figure.snip1382.hover:before,
+figure.snip1382:hover figcaption:after,
+figure.snip1382.hover figcaption:after,
+figure.snip1382:hover figcaption:before,
+figure.snip1382.hover figcaption:before {
+  left: 0;
+  right: 0;
+  opacity: 0.8;
+}
+figure.snip1382:hover figcaption h2,
+figure.snip1382.hover figcaption h2,
+figure.snip1382:hover figcaption p,
+figure.snip1382.hover figcaption p,
+figure.snip1382:hover figcaption .icons,
+figure.snip1382.hover figcaption .icons {
+  -webkit-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+}
+figure.snip1382:hover figcaption h2,
+figure.snip1382.hover figcaption h2,
+figure.snip1382:hover figcaption .icons,
+figure.snip1382.hover figcaption .icons {
+  opacity: 1;
+}
+figure.snip1382:hover figcaption p,
+figure.snip1382.hover figcaption p {
+  opacity: 0.7;
+}
+  
+  @import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=Quattrocento);
+.snip1361 {
+  font-family: 'Quattrocento', Arial, sans-serif;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #141414;
+  text-align: left;
+  line-height: 1.4em;
+  font-size: 16px;
+}
+.snip1361 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.snip1361 img {
+  vertical-align: top;
+}
+.snip1361 figcaption {
+  position: absolute;
+  top: calc(77%);
+  width: 100%;
+  background-color: white;
+  padding: 15px 25px 65px;
+}
+.snip1361 figcaption:before {
+  position: absolute;
+  content: '';
+  z-index: 2;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-image: -webkit-linear-gradient(top, transparent 0%, white 100%);
+  background-image: linear-gradient(to bottom, transparent 0%,  100%);
+}
+.snip1361 h3,
+.snip1361 p {
+  margin: 0 0 10px;
+}
+.snip1361 h3 {
+  font-weight: 300;
+  font-size: 1.4em;
+  line-height: 1.2em;
+  font-family: 'Oswald', Arial, sans-serif;
+  text-transform: uppercase;
+}
+.snip1361 p {
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+.snip1361 a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+.snip1361:hover figcaption,
+.snip1361.hover figcaption {
+  top: 80px;
+}
+/* Demo purposes only */
+
+</style>
+<div class="container">
+<center>
+<p id="notice"><%= notice %></p>
+
+<h1>공부합시<font id="f_duck">덕</font>.</h1>
+<a href="/stu/new">스터디원 모집</a>
+<hr>
+<% @stus.each do |study| %>
+<figure class="snip1382">
+  <img src="/<%= study.country %>.png" alt="sample99" width="350" height="250"/>
+  <figcaption>
+    <h2><%= study.title %></h2><br><br>
+    <p><%= study.content %> </p>
+    <div class="icons">
+      <a href="/stu/show/<%= study.id %>"><img src="/ey.png" width="30px" height="auto"></a>&nbsp;
+      <% if current_user.name == study.writer %>
+      <a href="/stu/delete/<%= study.id %>"> <img src="/garbage.png" width="30px" height="auto"></i></a>&nbsp;
+      <a href="/stu/edit/<%= study.id %>"> <img src="/pen.png" width="30px" height="auto"></i></a>
+      <% end %>
+    </div>
+  </figcaption>
+</figure>
+<% end %>
+</div>

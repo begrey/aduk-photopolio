@@ -1,0 +1,45 @@
+<style>
+    table {
+   width: 700px;
+   padding:30px;
+   text-align:center;
+}
+
+.btn {
+    background-color:rgb(255, 255, 255, 0);
+}
+</style>
+
+<center>
+
+<table>
+    <tr> 
+        <td style="background-color:#f2f2f2" height="40"> 게시글 작성</td> 
+    </tr>
+    <tr>
+        <td>
+<form action="/trade/create/<%params[:post_id]%>" method="post" enctype="multipart/form-data">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <br>
+    <input type="radio" name="category" value="교환" checked="checked" /> 교환
+             <input type="radio" name="category" value="공구" /> 공구 <br><br>
+             
+             
+             
+                <input type="text" class="form-control" name="title" placeholder="Title"/>
+             <br>
+             
+                <textarea class="form-control" rows="5" id="content" name="content" placeholder="Content" ></textarea>
+
+             <br>
+             
+                <input type="text"  class="form-control" name="wanted" placeholder="교환 원하는 아이템"/>
+             <br>
+    
+    
+    <button class="btn" id="btn" type="submit"><img class="btn-img" src="/assets/done.png" width="100" height="auto"></button>
+
+</form>
+</td></tr>
+</table>
+</center>

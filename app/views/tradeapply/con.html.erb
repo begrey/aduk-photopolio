@@ -1,0 +1,56 @@
+<style>
+    table {
+   width: 700px;
+   height:400px;
+   padding:30px;
+   text-align:center;
+}
+
+.btn {
+    background-color:rgb(255, 255, 255, 0);
+}
+</style>
+
+<div class="container">
+<center>
+<table>
+    <tr> 
+        <td colspan="2" style="background-color:#f2f2f2" height="40"> <%=@apply.title%> </td> 
+    </tr>
+    <tr>
+        <td rowspan="5" width="400" style="border-right:1px gray solid;"> 나중에 이미지 </td>
+        <td> <%=@apply.content%> </td>
+    </tr>
+    <tr>
+        <td> <%= @post.title %> </td>
+    </tr>
+    <tr>
+        <td> <%= @post.user_id %> </td>
+    </tr>
+    <tr>
+        <td><%=(@apply.created_at + 32400 ).strftime("%Y-%m-%d %a %H:%M:%S") %></td>
+    </tr>
+    <tr>
+        <Td>
+            <% if current_user.id == @apply.user_id %><h3>
+<a href="/apply/edit/<%=@apply.id%>/<%=@post.id%>" style="color:black"> <span class="glyphicon glyphicon-pencil"></span> 수정</a>
+<a href="/apply/delete/<%=@apply.id%>/<%=@post.id%>" style="color:black"> <span class="glyphicon glyphicon-trash"></span>  삭제</a><br></h3>
+<%else%>
+<%end%>
+
+<%if @apply.matching %>
+"교환 수락된 신청서" <br>
+<span class="glyphicon glyphicon-phone"></span> <%= User.find_by(name: @apply.writer).kakao %> 연락해주세요 
+<%else%>
+<%if @post.user_id == current_user.id %>
+ <a href="/apply/accept/<%=@apply.id%>">교환 수락하기</a>
+<%else%>
+ "아직 수락 되지 않은 신청서"
+<%end%>
+<%end%>
+        </Td>
+    </tr>
+    
+</table>
+</center>
+</div>

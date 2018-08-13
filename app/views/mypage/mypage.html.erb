@@ -1,0 +1,50 @@
+<br><br><br><br>
+<h1>
+<%= current_user.name %> 페이지
+
+<hr>
+ ID : <%= current_user.id %><br>
+ EMAIL : <%= current_user.email %><br>
+ KAKAOTALK ID : <%= current_user.kakao %><br>
+ SEX : <%= current_user.sex %><br>
+ BIRTH YEAR : <%= current_user.birthyear %><br>
+ REGION : <%= current_user.region %><br>
+ INTEREST : <%= current_user.interest %><br>
+ <% if @character == nil %>
+     덕메찾기를 이용하고 싶다면 성격 정보를 입력해주세요 <a href="/character/new">입력하러가기</a>
+ <% else %>
+     CHARACTER : <%= @character.character %> <br>
+ <% end %>
+ 
+ <hr>
+ 
+ </h1>
+ <hr><hr>
+ 
+ <H2> 내가 한 친구 신청</H2>
+        <% @hanchinchu.each do |a|%>
+            <%= a.partner %> 에게 매칭상태 : <%= a.matching %>
+            <br>
+            
+        <%end%>
+        
+     <H2> 내가 받은 친구 신청</H2>
+     <% @onchinchu.each do |a|%>
+            친추 한 사람: <%= a.user_id %>
+            <% us = User.find(a.id) %>
+            지역 : <%= us.region%>
+            성별 : <%= us.sex%>
+            나이 : <%= @time - us.birthyear + 1%>
+            성격 : <%= Character.find(a.id).character%> 
+                    <% if a.matching %>
+                        => 친구 수락 성공 ! <%= a.user_id %>의 카카오톡 아이디 : <%= us.kakao%>
+                    <% else %>
+                        <form action='/mateapply/<%= a.user_id%>/accept/<%= a.id%>' method='post'>
+                          <button> 수락하기 </button>  
+                        </form>
+                    <% end %>
+             <br>    
+            <% end %>
+            
+            
+    

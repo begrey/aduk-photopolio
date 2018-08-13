@@ -1,0 +1,55 @@
+<head>
+  <style>
+    div.bath {
+    position:relative;
+    z-index:1;
+    }
+    div.bath:after {
+        background-image:url('/assets/duckbath.png');
+        top:0;
+        left:0;
+        position:absolute;
+        background-size:100%;
+        opacity:0.5!important;
+        filter:alpha(opacity=50);
+        z-index:-1;
+        content:"";
+        width:100%;
+        height:100%;
+    }
+  </style>
+</head>
+<h4><%= link_to '돌아가기', posts_path %></h4>
+
+<center>
+<div class="bath" style="padding: 100px 100px 200px 100px">
+<p>
+  <h2>제목</h2>
+  <%= @post.title %>
+</p>
+<br>
+<p>
+  <h2>내용</h2>
+  <%= @post.content %>
+</p>
+</div>
+<p>
+       <img src="/assets/heart.png" class="img-rounded" width="20" height="20" opacity="20">
+      <%= @post.likes.size %> 명이 좋아합니다. 
+    </p>
+     
+    <p>
+      <% if current_user.is_like? (@post) %>
+      <form action='/post/<%= @post.id%>/like' method='post'>
+      <div id="cf"><button><img src="/assets/heart.png" class="top" width="20" height="20" onmouseover="this.src='/assets/noheart.png'" onmouseout="this.src='/assets/heart.png'"></button></div>  
+      </form>
+      
+      <% else %>
+      <form action='/post/<%= @post.id%>/like' method='post'>
+      <div id="cf"><button><img src="/assets/noheart.png" class="bottom" width="20" height="20" onmouseover="this.src='/assets/heart.png'" onmouseout="this.src='/assets/noheart.png'"></button></div>  
+      </form>
+  
+      <% end %>
+    </p>
+</center>
+<%= render :partial => 'comments/template', locals: {commentable: @post, new_comment: @comment} %>

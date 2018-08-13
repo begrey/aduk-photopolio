@@ -1,0 +1,68 @@
+<style>
+    
+     tr {text-align:center;}
+      td {padding:20px}
+      h2 {padding:10px}
+</style>
+
+
+
+
+    <div class="container">
+        <center>
+        <h2> 게시물 내용 상세 페이지</h2> <br><br>
+        <table width="1000">
+            <tr>
+                <td colspan="2" style="background-color:#f2f2f2"><strong><%=@post.category%> :: <%=@post.title%></strong></td>
+            </tr>
+            
+            <tr>
+                <td rowspan="5" style="border-right:0.5px gray solid"> 나중에 이미지 넣자요</td>
+                <td><%= @post.user_id%> </td>
+            </tr>
+            <tr>
+                <td><%=@post.content%> </td>
+            </tr>
+            <tr>
+                <td><%=(@post.created_at + 32400 ).strftime("%Y-%m-%d %a %H:%M:%S") %></td>
+            </tr>
+            <tr>
+                <td><%=@post.wantitem %></td>
+            </tr>
+            <tr>
+                <td width="450">
+                   <% if current_user.id == @post.user_id %>
+                        <h2><a href="/trade/edit/<%=@post.id%>" style="color:black" > <span class="glyphicon glyphicon-pencil"></span> EDIT</a>
+                        <a href="/trade/delete/<%=@post.id%>" style="color:black"> <span class="glyphicon glyphicon-trash"></span> DELETE</a><br>
+                        <span class="glyphicon glyphicon-bookmark"></span> SCRAP ( <%= @post.tradescraps.size %> )<br>
+                        <a href="/apply/list/<%=@post.id%>" style="color:black"><span class="glyphicon glyphicon-file"></span>  APPLY ( <%=@post.tradeapplies.count%> ) <br></a>
+                        </h2>
+                   <%else%>
+                   
+                       
+                       <% if current_user.is_tradeapply? (@post) %>
+                           <a href="/apply/con/<%=Tradeapply.find_by(user_id: current_user.id, tradepost_id: @post.id).id%>/<%=@post.id%>"> <img src="/assets/sinbo.png" width="150px" height="auto"></a>
+                       <% else %>
+                            <a href="/apply/new/<%=@post.id%>"> <img src="/assets/sinjak.png" width="150px" height="auto"> </a>
+                        <%end%>
+                         
+                         &nbsp;
+                         
+                        <% if current_user.is_tradescrap? (@post) %>
+                         <a href='/post/<%= @post.id%>/tradescrap' >
+                          <img src="/assets/ns.png" width="150px" height="auto">
+                         </a>
+  
+                       <% else %>
+                          <a href='/post/<%= @post.id%>/tradescrap' >
+                          <img src="/assets/scrap.png" width="150px" height="auto">
+                         </a>
+  
+                       <% end %>
+                        
+                    <%end%> 
+                </td>
+            </tr>
+        </table>
+        </center>
+    </div>

@@ -1,0 +1,28 @@
+<style>
+    tr {border-bottom:1px gray solid;}
+     td {padding:20px}
+</style>
+
+
+
+<div class="container" >
+    <center>
+    
+  <br><br>
+  
+
+<h1> 현재 받은 신청서</h1>
+    <table width="1000" >
+    <% @applies.each do |x| %>
+    <tr>
+    <td><%= x.matching%></td>
+    <td width="600"><a href="/apply/con/<%=x.id%>/<%=x.tradepost_id%>"> <%=x.title%> </a></td>
+    <td><%= x.user_id%></td>
+    <td><%= (x.created_at + 32400 ).strftime"%Y-%m-%d %H:%M"%></td>
+    </tr>
+    <%end%>
+    </table>
+
+  </center>
+  </div>
+  <br><br>
