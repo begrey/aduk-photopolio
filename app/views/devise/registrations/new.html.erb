@@ -1,36 +1,100 @@
-<center>
-<h2>회원가입</h2>
+<style>
+  body{
+    background-color:#fafafb;
+  }
+  .cenbox{
+   position: absolute;
+   width: 500px;
+   left: 50%;
+   top: 50%;
+   margin-left: -250px;
+   margin-top: -250px;
+   border: 1px #d9d9d9 solid;
+   background: white;
+   text-align: center;
+   font-family: 'Nanum Gothic Coding', monospace;
+   padding:60px 10px 60px 10px;
+  }
+
+  .inbox {
+    background-color:#fafafb;
+    border: 1px #d9d9d9 solid;
+    width:230px;
+    padding:10px;
+    margin:10px;
+  }
+  
+  .field select {
+    width: 230px;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color:#fafafb;
+    border: 1px #d9d9d9 solid;
+  }
+  
+  .incen {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -250px;
+  }
+  
+  .my_btn {
+    border: 1px #B0C4DE solid;
+    border-radius:10px;
+    background-color:#B0C4DE;
+    padding:10px;
+    width:230px;
+    margin:10px;
+    color:white;
+    font-weight:bold;
+  }
+  
+  label {
+    color: #555;
+  }
+
+</style>
+<h1><img src="/assets/move.gif" width="50px" height="auto">어덕나덕<img src="/assets/move.gif" width="50px" height="auto"></h1>
+<div class="cenbox">
+
+<% year = Array.new {Array.new} %>
+      <% for i in 1980..Time.now.year do %>
+        <% year << [i, i] %>
+      <% end %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" ,class: "inbox",placeholder: "이름" %>
   </div>
   
 <br>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "inbox",placeholder: "이메일주소"%>
   </div>
   
 <br>
 
   <div class="field">
-    <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off" ,class: "inbox",placeholder: "비밀번호 ( #{@minimum_password_length}글자 이상 )"%>
+    <% else %>
+    <%= f.password_field :password, autocomplete: "off" ,class: "inbox",placeholder: "비밀번호"%>
+    <% end %>
   </div>
   
 <br>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" ,class: "inbox",placeholder: "비밀번호 확인"%>
   </div>
     
 <br>
@@ -47,25 +111,25 @@
 
    <div class="field">
     <%= f.label :birthyear %><br />
-    <%= f.select(:birthyear) do %>
-      <% [['2018', 2018], ['2017', 2017], ['1996', 1996], ['1995', 1995]].each do |c| -%>
-      <%= content_tag(:option, c.first, value: c.last) %>
-    <% end %>
+    <%= f.select(:birthyear)  do %>
+      <% year.each do |c| -%>
+      <%= content_tag(:option, c[0], value: c[1] ) %>
+      <% end %>
     <% end %>
   </div>
+      
+  
     
 <br>
 
 <div class="field">
-    <%= f.label :region %><br />
-    <%= f.text_field :region, autofocus: true, autocomplete: "region" %>
+    <%= f.text_field :region, autofocus: true, autocomplete: "region" ,class: "inbox",placeholder: "지역"%>
   </div>
   
 <br>
 
   <div class="field">
-    <%= f.label :kakao %><br />
-    <%= f.text_field :kakao, autofocus: true, autocomplete: "kakao" %>
+    <%= f.text_field :kakao, autofocus: true, autocomplete: "kakao" ,class: "inbox",placeholder: "카카오톡 아이디"%>
   </div>
     
 <br>
@@ -87,9 +151,9 @@
 
   <div class="actions">
     <br>
-    <%= f.submit "가입하기" %>
+    <%= f.submit "가입하기" , class:"my_btn" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
-</center>
+</div>

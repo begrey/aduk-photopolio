@@ -1,5 +1,5 @@
 class MatchingController < ApplicationController
-  
+before_action :authenticate_user!
   def main
     @my_cha = Character.find_by(user_id: current_user.id)
     @modu = Character.all
@@ -11,7 +11,6 @@ class MatchingController < ApplicationController
   
   def list
     
-  
     time = Time.new
     @me = Character.find_by(user_id: current_user.id)
     @me_age = time.year - current_user.birthyear 
@@ -22,35 +21,41 @@ class MatchingController < ApplicationController
     @b_year1 = time.year - (params[:age1].to_i) + 1
     @b_year2 = time.year - (params[:age2].to_i) + 1
     
-    if params[:sex] <=> "both"
+    if params[:sex] == "both"
       @oc = User.where("interest = ?", current_user.interest)
       @others = @oc.where(:birthyear => (@b_year2)..(@b_year1))
     else
       @oc = User.where("sex = ? AND interest = ? ", params[:sex], current_user.interest)
-       @others = @oc.where(:birthyear => (@b_year2)..(@b_year1))
+      @others = @oc.where(:birthyear => (@b_year2)..(@b_year1))
     end
     
     i = 0
+    j = @my_character.count
+   
     
     @others.each do|a| #모든 사람들 중에서
      i = 0
-     @my_character.each do|b| #나의 성격과 하나 하나 
-      Character.find(a.id).character.each do|c| #다른사람들의 성격과 하나 하나 비교
-        if b == c #만약 내 성격항목과 다른 사람의 성격항목이 같으면
-          i += 1
+     k = 0
+     if Character.find_by(user_id: a.id) == nil
           break
-        end #if꺼
-      end#c꺼
-    
-     end#b꺼
-      if i >= 2 
-        @result << User.find_by(id: a.id)
+     end
+     @my_character.each do|b| #나의 성격과 하나 하나 
         
+        k = Character.find_by(user_id: a.id).character.count
+        Character.find_by(user_id: a.id).character.each do|c| 
+            if b == c  
+                i += 1
+            end
+        end #c의 
+          
+     end #b의
+      
+      if  i >= 2 || j == i || k == i
+        @result << User.find_by(id: a.id)
       end #if꺼
     
-  end #a꺼d
+  end #a꺼
    
-  
- end# list action꺼
-  
+end
+
 end

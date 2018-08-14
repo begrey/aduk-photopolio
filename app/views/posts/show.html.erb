@@ -1,4 +1,4 @@
-<head>
+
   <style>
     div.bath {
     position:relative;
@@ -17,8 +17,9 @@
         width:100%;
         height:100%;
     }
+    
   </style>
-</head>
+<div class="container"><br><br><br><br><br>
 <h4><%= link_to '돌아가기', posts_path %></h4>
 
 <center>
@@ -52,4 +53,6 @@
       <% end %>
     </p>
 </center>
+
 <%= render :partial => 'comments/template', locals: {commentable: @post, new_comment: @comment} %>
+</div>

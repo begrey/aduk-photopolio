@@ -1,24 +1,54 @@
-<br><br><br><br>
-<h1>
-<%= current_user.name %> 페이지
+<style>
+    table {
+    height:400px;
+    width:700px;
+}
+tr {
+    padding:20px;
+    border-top:1px black solid;
+}
 
+td {
+    padding:20px;
+
+}
+</style>
+
+<br><br><br><br>
+<h1> "<%= current_user.name %>" 로 말할 것 같으면 </h1>
 <hr>
- ID : <%= current_user.id %><br>
- EMAIL : <%= current_user.email %><br>
- KAKAOTALK ID : <%= current_user.kakao %><br>
- SEX : <%= current_user.sex %><br>
- BIRTH YEAR : <%= current_user.birthyear %><br>
- REGION : <%= current_user.region %><br>
- INTEREST : <%= current_user.interest %><br>
- <% if @character == nil %>
-     덕메찾기를 이용하고 싶다면 성격 정보를 입력해주세요 <a href="/character/new">입력하러가기</a>
- <% else %>
-     CHARACTER : <%= @character.character %> <br>
- <% end %>
- 
- <hr>
- 
- </h1>
+<div style="font-family: 'Nanum Gothic Coding', monospace;">
+    
+    <table align="center">
+        <tr style="border:none">
+            <td rowspan="6" width="200px">♥ <%= current_user.interest %> ♥</td>
+            <td colspan="2">ID : <%= current_user.id %></td>
+        </tr>
+        <tr>
+            <td>NAME : <%= current_user.name %></td>
+            <td>AGE : <%= Time.now.year - current_user.birthyear + 1%></td>
+        </tr>
+        <tr>
+            <td>SEX : <%= current_user.sex %></td>
+            <td>REGION : <%= current_user.region %></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <% if @character == nil %>
+                     덕메사냥을 위한 정보를 입력해주세요 <a href="/character/new">입력하러가기</a>
+                 <% else %>
+                     CHARACTER : <%= @character.character %> <br>
+                 <% end %>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">KAKAOTALK ID : <%= current_user.kakao %></td>
+        </tr>
+        <tr>
+            <td colspan="2">EMAIL : <%= current_user.email %></td>
+        </tr>
+    </table>
+  
  <hr><hr>
  
  <H2> 내가 한 친구 신청</H2>
@@ -47,4 +77,4 @@
             <% end %>
             
             
-    
+    </div>
