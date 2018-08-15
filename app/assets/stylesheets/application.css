@@ -1,3 +1,8 @@
+/* ---------------------------------------------------------------------------
+
+    appllication controller
+
+---------------------------------------------------------------------------  */
 
 
 @import url('https://fonts.googleapis.com/css?family=Black+Han+Sans');
@@ -28,4 +33,152 @@ body {
     float: right;
     padding-top: 15px;
     margin-right: 20px
+}
+
+
+
+/* ---------------------------------------------------------------------------
+
+    posts controller
+
+---------------------------------------------------------------------------  */
+
+
+
+  table.type10 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 10px;
+}
+table.type10 thead th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: #c180ff;
+    margin: 20px 10px;
+}
+table.type10 tbody th {
+    width: 150px;
+    padding: 10px;
+}
+table.type10 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+}
+tbody tr:nth-child(even)  { background-color: #f3e6ff; }
+
+
+/* ---------------------------------------------------------------------------
+
+    stu controller
+
+---------------------------------------------------------------------------  */
+
+
+.stu {
+    margin-top: 100px;
+}
+
+.stu .image {
+ position:relative;
+ width: 1024px;
+ text-align: center;
+ margin-bottom:30px;
+}
+
+.stu .image .text {
+ position:absolute;
+ top:40px; 
+ padding-top:220px;
+ text-align: center;
+
+ left:320px;
+}
+
+.stu .image .text h1 {
+ border-bottom:2px black solid;
+ margin-bottom:100px;
+}
+
+.stu .image .text .app img {
+ position:absolute;
+ margin-top:60px;
+ float: right;
+ width:200px;
+ height:auto;
+}
+
+.stu .image .text .app img{
+ left:400px;
+}
+
+.stu #f_duck {
+ color: Plum;
+}
+
+.stu table {
+    background-color:white;
+}
+
+.stu tr {
+    background-color:white;
+}
+
+.stu td {
+    background-color:white;
+}
+
+
+/* ---------------------------------------------------------------------------
+
+    mypage controller
+
+---------------------------------------------------------------------------  */
+
+
+.mpage {
+    margin-top : 100px
+}
+
+.mpage .maintable {
+    height:400px;
+    width:700px;
+    
+}
+
+.mpage .maintable tr {
+    padding:10px;
+    border-top:1px black solid;
+    background-color:white;
+} 
+
+.mpage .maintable td {
+    padding:10px;
+    background-color:white;
+}
+
+
+.mpage table {
+    padding:10px;
+    background-color:white;
+}
+
+.mpage tr {
+    padding:10px;
+    background-color:white;
+}
+.mpage th {
+    padding:10px;
+    background-color:white;
+    border-bottom: 1px black solid;
+}
+.mpage td {
+    padding:10px;
+    background-color:white;
 }

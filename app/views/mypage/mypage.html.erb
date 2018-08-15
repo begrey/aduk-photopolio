@@ -1,25 +1,30 @@
-<style>
-    table {
-    height:400px;
-    width:700px;
-}
-tr {
-    padding:20px;
-    border-top:1px black solid;
-}
-
-td {
-    padding:20px;
-
-}
-</style>
-
-<br><br><br><br>
+<div class="mpage">
 <h1> "<%= current_user.name %>" 로 말할 것 같으면 </h1>
+
+<!-- modal button -->
+<div class="btn-group">
+  <div class="btn-group">
+    <button type="button" class="btn" data-toggle="dropdown"> 바꿔나눠 <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a data-toggle="modal" data-target="#tradpo">나의 게시글</a></li>
+      <li><a data-toggle="modal" data-target="#mytrade">나의 신청</a></li>
+      <li><a data-toggle="modal" data-target="#badtrade">받은 신청</a></li>
+    </ul>
+  </div>
+  
+  <div class="btn-group">
+    <button type="button" class="btn" data-toggle="dropdown"> 덕질메이트 <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a data-toggle="modal" data-target="#myapp">나의 신청</a></li>
+      <li><a data-toggle="modal" data-target="#badapp">받은 신청</a></li>
+    </ul>
+  </div>
+</div>
+
 <hr>
 <div style="font-family: 'Nanum Gothic Coding', monospace;">
     
-    <table align="center">
+    <table align="center" class="maintable">
         <tr style="border:none">
             <td rowspan="6" width="200px">♥ <%= current_user.interest %> ♥</td>
             <td colspan="2">ID : <%= current_user.id %></td>
@@ -49,19 +54,50 @@ td {
         </tr>
     </table>
   
- <hr><hr>
- 
- <H2> 내가 한 친구 신청</H2>
+
+    </div>
+
+
+
+<!-- Modal -->
+<div id="myapp" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">내가 한 친구 신청</h4>
+      </div>
+      <div class="modal-body">
         <% @hanchinchu.each do |a|%>
-            <%= a.partner %> 에게 매칭상태 : <%= a.matching %>
-            <br>
+            <% us = User.find_by(id: a.partner) %>
+            <a  data-toggle="popover" title="<%= a.partner %>의 자기 소개" data-content="<%= Character.find(us.id).introduce %>"><%= a.partner %></a>
+            에게 매칭상태 : <%= a.matching %></a>
             
+            <br>
         <%end%>
-        
-     <H2> 내가 받은 친구 신청</H2>
-     <% @onchinchu.each do |a|%>
-            친추 한 사람: <%= a.user_id %>
-            <% us = User.find(a.id) %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="badapp" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">내가 받은 친구 신청</h4>
+      </div>
+      <div class="modal-body">
+        <% @onchinchu.each do |a|%>
+            <% us = User.find(a.user_id) %>
+            친추 한 사람:  <a  data-toggle="popover" title="<%= a.user_id %>의 자기 소개" data-content="<%= Character.find_by(user_id: a.user_id).introduce %>">
+                <%= us.name %> </a>
             지역 : <%= us.region%>
             성별 : <%= us.sex%>
             나이 : <%= @time - us.birthyear + 1%>
@@ -75,6 +111,121 @@ td {
                     <% end %>
              <br>    
             <% end %>
-            
-            
+      </div>
     </div>
+
+  </div>
+</div>
+
+<div id="tradpo" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">나의 게시글</h4>
+      </div>
+      <div class="modal-body">
+         <table align="center">
+             <tr>
+                 <th>카테고리</th>
+                 <th>제목</th>
+                 <th>내용</th>
+                 <th>원하는 아이템</th>
+                 <th>교환 상태</th>
+             </tr>
+        <% @tradepost.each do |a|%>
+        <tr>
+            <td><%= a.category %></td>
+            <td><%= a.title %></td>
+            <td><%= a.content %></td>
+            <td><%= a.wantitem %></td>
+            <td><%= a.state %></td>
+        </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="mytrade" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">나의 교환 신청서</h4>
+      </div>
+      <div class="modal-body">
+         <table align="center">
+             <tr>
+                 <th>카테고리</th>
+                 <th>제목</th>
+                 <th>내용</th>
+                 <th>수락 상태</th>
+             </tr>
+        <% @mytradeapp.each do |a|%>
+        <tr>
+            <td><%= a.category %></td>
+            <td><%= a.title %></td>
+            <td><%= a.content %></td>
+            <td><%= a.matching %></td>
+        </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="badtrade" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">받은 교환신청서</h4>
+      </div>
+      <div class="modal-body">
+         <table align="center">
+             <tr>
+                 <th>해당 교환글</th>
+                 <th>제목</th>
+                 <th>내용</th>
+                 <th>수락 상태</th>
+             </tr>
+        <% @badtradeapp.each do |a|%>
+        <tr>
+            <td><%= Tradepost.find(a.tradepost_id).title %></td>
+            <td><%= a.title %></td>
+            <td><%= a.content %></td>
+            <td>
+                <% if a.matching %>
+                    수락하셨습니다
+                <% else %>
+                    <a href="/apply/accept/<%=a.id%>">교환 수락하기</a>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+</div>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+</script>

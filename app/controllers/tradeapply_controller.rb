@@ -13,6 +13,7 @@ def create
     @apply.content = params[:content]
     @apply.user_id = current_user.id
     @apply.matching = false
+    @apply.partner = @post.user_id
     @apply.save
     
     redirect_to "/apply/con/#{@apply.id}/#{@post.id}"

@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20180813221835) do
 
   create_table "characters", force: :cascade do |t|
     t.text     "character"
+    t.text     "introduce"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,10 +72,9 @@ ActiveRecord::Schema.define(version: 20180813221835) do
   create_table "mateapplies", force: :cascade do |t|
     t.string   "partner"
     t.boolean  "matching"
-    t.integer  "characters_id"
     t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "mateapplies", ["user_id"], name: "index_mateapplies_on_user_id"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20180813221835) do
     t.integer  "tradepost_id"
     t.boolean  "matching"
     t.integer  "user_id"
+    t.integer  "partner"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

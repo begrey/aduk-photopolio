@@ -1,11 +1,13 @@
 <style>
     div{text-align:center; margin:30px;}
-    table{width:900px}
+    table{width:900px;}
     .gbg{background-color:#D8BFD8;}
     .bb{border-bottom:1px black solid;}
     th, td{padding:20px;text-align:center;}
+    td{background-color:white;}
     .btn-img{width:90px;height:auto;background:rgba( 255, 255, 255, 0.5 );}
     .btn{background:rgba( 255, 255, 255, 0.5 );}
+    .popover .arrow {display: none;}
 </style>
 
 
@@ -17,7 +19,7 @@
         
         <table align="center">
             <tr class="gbg">
-                <th> ID </th>
+                <th> ID </th> <!-- 나중에 뺄거임-->
                 <th> NAME </th>
                 <th> SEX </th>
                 <th> AGE </th>
@@ -29,8 +31,10 @@
             <tr class="bb">    
                 <% if x.id != current_user.id %>
         
-                    <td> <%= x.id %> </td>
-                    <td> <%= x.name %> </td>
+                    <td> <%= x.id %> </td> <!-- 나중에 뺄거임-->
+                    <td> 
+                        <a  data-toggle="popover" title="<%= x.name %> 의 자기소개" data-content="<%= Character.find_by(user_id: x.id).introduce%>"> <%= x.name %> </a>
+                    </td>
                     <td> <%= x.sex %> </td>
                     <td> 
                         <% time = Time.now %>
@@ -79,3 +83,8 @@
 
 <br>
 
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+</script>

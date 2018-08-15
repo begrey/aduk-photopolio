@@ -6,6 +6,7 @@ class CreateTradeapplies < ActiveRecord::Migration
       t.integer :tradepost_id
       t.boolean :matching
       t.integer :user_id
+      t.integer :partner
 
       t.timestamps null: false
     end
