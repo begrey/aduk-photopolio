@@ -8,7 +8,7 @@
    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   
   
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua|Gothic+A1|Gaegu|Nanum+Gothic+Coding" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua|Gothic+A1|Gaegu|Nanum+Gothic+Coding|Gothic+A1" rel="stylesheet">  
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -50,7 +50,20 @@
       <li role="presentation"><%=link_to 'Logout', destroy_user_session_path, method: 'delete', role: 'menuitem', tabindex: '-1'%></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="/mypage/mypage">My Page</a></li>
       <li role="presentation" class="divider"></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" >어덕나덕</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" >
+      <a data-toggle="modal" data-target="#myAl">
+          <h4 style="display: inline"><span class="glyphicon glyphicon-bell" style="vertical-align: middle;"></span></h4>
+        <% if current_user.new_notifications.unread_by(current_user).count > 0 %> 
+          <span class="onemoreal">
+           <%= current_user.new_notifications.unread_by(current_user).count %>
+          </span>
+        <% else %>
+          <span class="noneal">
+           <%= current_user.new_notifications.unread_by(current_user).count %>
+          </span>
+        <%end%>
+      </a>
+      </li>
     </ul>
     
       <%else%>
@@ -60,10 +73,35 @@
   
 </div>
 
+
 <%end%>
 
+<%if user_signed_in?%>
+<div id="myAl" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><span class="glyphicon glyphicon-bell"></span>&nbsp;알림( <%= current_user.new_notifications.unread_by(current_user).count %> )</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+            <%= render partial: "new_notifications/new_notification", collection: current_user.new_notifications.unread_by(current_user) %><br>
+            <%= link_to '<font color="gray">모든 알림 지우기</font>'.html_safe, new_notifications_read_all_path %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
   <%= yield %>
   <br>
- 
+  
 </body>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+</script>
+
 </html>

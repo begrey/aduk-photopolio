@@ -3,6 +3,7 @@
 
 <!-- modal button -->
 <div class="btn-group">
+ 
   <div class="btn-group">
     <button type="button" class="btn" data-toggle="dropdown"> 바꿔나눠 <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
@@ -19,6 +20,8 @@
       <li><a data-toggle="modal" data-target="#badapp">받은 신청</a></li>
     </ul>
   </div>
+  
+  
 </div>
 
 <hr>
@@ -101,7 +104,7 @@
             지역 : <%= us.region%>
             성별 : <%= us.sex%>
             나이 : <%= @time - us.birthyear + 1%>
-            성격 : <%= Character.find(a.id).character%> 
+            성격 : <%= Character.find_by(user_id: a.user_id).character%> 
                     <% if a.matching %>
                         => 친구 수락 성공 ! <%= a.user_id %>의 카카오톡 아이디 : <%= us.kakao%>
                     <% else %>
@@ -163,14 +166,14 @@
       <div class="modal-body">
          <table align="center">
              <tr>
-                 <th>카테고리</th>
+                 <th>해당 교환글</th>
                  <th>제목</th>
                  <th>내용</th>
                  <th>수락 상태</th>
              </tr>
         <% @mytradeapp.each do |a|%>
         <tr>
-            <td><%= a.category %></td>
+            <td><%= Tradepost.find(a.tradepost_id).title %></td>
             <td><%= a.title %></td>
             <td><%= a.content %></td>
             <td><%= a.matching %></td>

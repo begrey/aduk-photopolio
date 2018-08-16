@@ -25,6 +25,10 @@ Rails.application.routes.draw do
   get 'stuapp/appdel/:app_id' => 'stu#appdelete'
   post 'stuapp/update/:app_id' => 'stu#appupdate'
   
+  #알림
+  get '/new_notifications/read_all' => 'new_notifications#read_all'
+  resources :new_notifications
+  
   #교환게시판
   get 'trade/home'
   get 'trade/index/:post_id' => 'trade#index'

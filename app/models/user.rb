@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  acts_as_reader
+  has_many :new_notifications
   belongs_to :character
   has_many :post
   has_many :likes

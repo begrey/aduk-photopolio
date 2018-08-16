@@ -48,6 +48,9 @@ class StuController < ApplicationController
     @app = @stu.stuapps.create(title: params[:title], content: params[:content], stu_id: params[:stu_id], writer: current_user.name)
     @app.save
     
+    @part = User.find_by(name: @stu.writer)
+    @new_notification = NewNotification.create! user: @part,content: "#{current_user.name}스터디 신청글을 작성했습니다\n", link: "/stuapp/index/#{@stu.id}"
+    
     redirect_to "/stu/show/#{params[:stu_id]}"
   end
   
@@ -74,7 +77,13 @@ class StuController < ApplicationController
   end
   
   def appdelete
-    @app = Stuapp.find(params[:app_id]).destroy
+    
+    @app = Stuapp.find(params[:app_id])
+    @stu = Stu.find(@app.stu_id)
+    @part = User.find_by(name: @stu.writer)
+    @app.destroy
+    @notification = NewNotification.find_by(content: "#{current_user.name}스터디 신청글을 작성했습니다\n", user: @part)
+    @notification.destroy
     
     redirect_to "/stu/show/#{@app.stu_id}"
   end

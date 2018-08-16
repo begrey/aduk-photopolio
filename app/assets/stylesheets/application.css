@@ -35,6 +35,36 @@ body {
     margin-right: 20px
 }
 
+.onemoreal {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #4682B4;
+    border-radius: 10px;
+}
+
+.noneal{
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius: 10px;
+}
+
 
 
 /* ---------------------------------------------------------------------------
@@ -83,6 +113,14 @@ tbody tr:nth-child(even)  { background-color: #f3e6ff; }
 
 .stu {
     margin-top: 100px;
+}
+
+.stu .image h5 {
+    font-family: 'Gothic A1', sans-serif;
+}
+
+.stu .image h3 {
+    font-family: 'Gothic A1', sans-serif;
 }
 
 .stu .image {
@@ -182,3 +220,82 @@ tbody tr:nth-child(even)  { background-color: #f3e6ff; }
     padding:10px;
     background-color:white;
 }
+
+
+/* ---------------------------------------------------------------------------
+
+    trade controller
+
+---------------------------------------------------------------------------  */
+
+
+.tradehome { margin-top: 100px;}
+.tradehome .cont { padding-right: 15px;padding-left: 15px;width:900px;margin-right: auto;margin-left: auto;}
+.tradehome tr {border-bottom:1px lightgray solid; font-family: 'Gothic A1', sans-serif;}
+.tradehome td {padding:10px;background-color:white;}
+
+.tradeindex { margin-top: 100px;}
+.tradeindex tr {text-align:center;background-color:white; font-family: 'Gothic A1', sans-serif;}
+.tradeindex td {padding:20px;background-color:white;}
+.tradeindex h2 {padding:10px}
+
+.tradeedit { margin-top: 100px;}
+.tradeedit table {
+   width: 700px;
+   padding:30px;
+   text-align:center;
+   background-color:white;
+   font-family: 'Gothic A1';
+}
+.tradeedit tr td{ background-color:white;font-family: 'Gothic A1', sans-serif;}
+.tradeedit .btn { background-color:rgb(255, 255, 255, 0);}
+
+
+/* ---------------------------------------------------------------------------
+
+    tradeapply controller
+
+---------------------------------------------------------------------------  */
+
+.tradelist { margin-top: 100px;}
+.tradelist table{background-color:white; font-family: 'Gothic A1';}
+.tradelist tr {border-bottom:1px gray solid;background-color:white;}
+.tradelist td {padding:20px;background-color:white;}
+.tradelist th {text-align: center;padding-bottom:20px}
+
+.tradeapplycon { margin-top: 100px;}
+.tradeapplycon table {
+   width: 700px;
+   height:400px;
+   padding:30px;
+   text-align:center;
+   background-color:white;
+   font-family: 'Gothic A1';
+}
+
+.tradeapplycon tr {background-color:white;}
+.tradeapplycon td {background-color:white;}
+.tradeapplycon .btn {background-color:rgb(255, 255, 255, 0);}
+
+.tradeapplyedit { margin-top: 100px;}
+.tradeapplyedit table {
+   width: 700px;
+   padding:30px;
+   text-align:center;
+   background-color:white;
+   font-family: 'Gothic A1';
+}
+.tradeapplyedit td {background-color:white;}
+.tradeapplyedit .btn {background-color:rgb(255, 255, 255, 0);}
+
+.tradeapplynew { margin-top: 100px;}
+.tradeapplynew table {
+   width: 700px;
+   padding:30px;
+   text-align:center;
+   background-color:white;
+   font-family: 'Gothic A1';
+}
+.tradeapplynew tr {background-color:white;}
+.tradeapplynew td {background-color:white;}
+.tradeapplynew .btn {background-color:rgb(255, 255, 255, 0);}

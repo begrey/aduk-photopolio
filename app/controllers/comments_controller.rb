@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
         format.html  { redirect_to(request.referrer, :alert => '댓글 내용을 작성해주세요.') }
       end
     end
+    
   end
  
   def destroy

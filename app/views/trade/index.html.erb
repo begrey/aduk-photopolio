@@ -1,19 +1,11 @@
-<style>
-    
-     tr {text-align:center;background-color:white;}
-      td {padding:20px;background-color:white;}
-      h2 {padding:10px}
-</style>
-
-
-
+<div class="tradeindex">
 
     <div class="container">
         <center>
         <h2> 게시물 내용 상세 페이지</h2> <br><br>
         <table width="1000">
             <tr>
-                <td colspan="2" style="background-color:#f2f2f2"><strong><%=@post.category%> :: <%=@post.title%></strong></td>
+                <td colspan="2" style="background-color:#f2f2f2"><strong>[ <%=@post.category%> ] &nbsp; <%=@post.title%></strong></td>
             </tr>
             
             <tr>
@@ -33,10 +25,10 @@
                 <td width="450">
                    <% if current_user.id == @post.user_id %>
                         <h2><a href="/trade/edit/<%=@post.id%>" style="color:black" > <span class="glyphicon glyphicon-pencil"></span> EDIT</a>
-                        <a href="/trade/delete/<%=@post.id%>" style="color:black"> <span class="glyphicon glyphicon-trash"></span> DELETE</a><br>
-                        <span class="glyphicon glyphicon-bookmark"></span> SCRAP ( <%= @post.tradescraps.size %> )<br>
-                        <a href="/apply/list/<%=@post.id%>" style="color:black"><span class="glyphicon glyphicon-file"></span>  APPLY ( <%=@post.tradeapplies.count%> ) <br></a>
-                        </h2>
+                        <a href="/trade/delete/<%=@post.id%>" style="color:black"> <span class="glyphicon glyphicon-trash"></span> DELETE</a><br></h2>
+                        <span class="glyphicon glyphicon-bookmark"></span>  ( <%= @post.tradescraps.size %> ) &nbsp;
+                        <a href="/apply/list/<%=@post.id%>" style="color:black"><span class="glyphicon glyphicon-file"></span>  ( <%=@post.tradeapplies.count%> ) <br></a>
+                        
                    <%else%>
                    
                        
@@ -66,3 +58,5 @@
         </table>
         </center>
     </div>
+    
+</div>

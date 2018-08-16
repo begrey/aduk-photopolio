@@ -1,10 +1,4 @@
-<style>
-table{background-color:white;}
-    tr {border-bottom:1px gray solid;background-color:white;}
-     td {padding:20px;background-color:white;}
-</style>
-
-
+<div class="tradelist">
 
 <div class="container" >
     <center>
@@ -12,18 +6,27 @@ table{background-color:white;}
   <br><br>
   
 
-<h1> 현재 받은 신청서</h1>
-    <table width="1000" >
-    <% @applies.each do |x| %>
+<h1> 현재 받은 신청서</h1><br>
+    <table width="800" >
     <tr>
+        <th> 수락상태</th>
+        <th> 제목 </th>
+        <th> 내용 </th>
+        <th> 작성자</th>
+        <th> 작성시간</th>
+    </tr>
+    <% @applies.each do |x| %>
+    <tr onClick = " location.href='/apply/con/<%=x.id%>/<%=x.tradepost_id%>' ">
     <td><%= x.matching%></td>
-    <td width="600"><a href="/apply/con/<%=x.id%>/<%=x.tradepost_id%>"> <%=x.title%> </a></td>
+    <td width="350"> <%=x.title%> </td>
+    <td> <%=x.content %></td>
     <td><%= x.user_id%></td>
-    <td><%= (x.created_at + 32400 ).strftime"%Y-%m-%d %H:%M"%></td>
+    <td><%= (x.created_at + 32400 ).strftime"%m / %d"%></td>
     </tr>
     <%end%>
     </table>
 
   </center>
   </div>
-  <br><br>
+  
+</div>
