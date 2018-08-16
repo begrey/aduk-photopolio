@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(version: 20180816152520) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
+    t.string   "videourl"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -108,9 +110,10 @@ ActiveRecord::Schema.define(version: 20180816152520) do
     t.string   "title"
     t.text     "content"
     t.integer  "stu_id"
+    t.integer  "stupost_writer"
     t.text     "writer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "stus", force: :cascade do |t|
@@ -118,6 +121,7 @@ ActiveRecord::Schema.define(version: 20180816152520) do
     t.text     "content"
     t.string   "country"
     t.string   "writer"
+    t.boolean  "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

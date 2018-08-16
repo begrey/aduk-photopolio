@@ -5,6 +5,7 @@ class CreateStus < ActiveRecord::Migration
       t.text :content
       t.string :country
       t.string :writer
+      t.boolean :state
 
       t.timestamps null: false
     end

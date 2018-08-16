@@ -2,13 +2,23 @@ class MypageController < ApplicationController
     
     def mypage
         @time = Time.new.year
-        @character = Character.find_by(user_id: current_user.id)
-        @hanchinchu = current_user.mateapplies
-        @onchinchu = Mateapply.where("partner = ? ", current_user.id)
         
-        @tradepost = current_user.tradepost
-        @mytradeapp = current_user.tradeapplies
-        @badtradeapp = Tradeapply.where("partner = ?", current_user.id)
+        @mpo = current_user.posts.reverse
+        @comm = Comment.where("user_id = ?", current_user)
+        
+        @character = Character.find_by(user_id: current_user.id)
+        @hanchinchu = current_user.mateapplies.reverse
+        @onchinchu = Mateapply.where("partner = ? ", current_user.id).reverse
+        
+        @tradepost = current_user.tradeposts.reverse
+        @mytradeapp = current_user.tradeapplies.reverse
+        @badtradeapp = Tradeapply.where("partner = ?", current_user.id).reverse
+        
+        @mystu = Stu.where("writer = ?", current_user.name).reverse
+        @mystuap = Stuapp.where("writer = ?", current_user.name).reverse
+        @badstu = Stuapp.where("stupost_writer = ?", current_user.name).reverse
+        
+        @scrap = current_user.tradescraps.reverse
     end
     
     def chanew

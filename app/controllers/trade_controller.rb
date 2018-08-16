@@ -1,6 +1,6 @@
 class TradeController < ApplicationController
     def home
-    @posts = Tradepost.all
+    @posts = Tradepost.all.reverse
     @na = Tradepost.where("category = ? ", "교환")
     @gong = Tradepost.where("category =? ", "공구")
     
@@ -28,7 +28,16 @@ class TradeController < ApplicationController
   
   def delete
     @post = Tradepost.find(params[:post_id])
+    @scraps = Tradescrap.where("tradepost_id = ?", @post.id)
+    @scraps.each do |s|
+      s.destroy
+    end
+    @apply = Tradeapply.where("tradepost_id = ?", @post.id)
+    @apply.each do |a|
+      a.destroy
+    end
     @post.destroy
+    
     redirect_to '/trade/home'
   end
   
@@ -43,7 +52,7 @@ class TradeController < ApplicationController
     @post.category = params[:category]
     @post.wantitem = params[:wanted]
     @post.interest = "나중에 옮기면서 유저 관심 분야 받아 올 예정"
-    @post.save
+    @post.state = params[:state]
     @post.save
     redirect_to "/trade/index/#{@post.id}"
   end

@@ -1,36 +1,32 @@
+<div style="margin-top:100px">
 <center>
-
-<h1> 해석좀 부탁해요ㅠㅡㅠ</h1>
+ 
+<h1>해석을 부탁합니<font id="f_duck">덕</font></h1>
 
 <br>
 <%= link_to "새로운 요청글 작성하기", new_post_path %>
 <br><br><br>
 <%= form_tag posts_path, :method => :get do %>
   <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "검색" , :name => nil %>
+    <%= text_field_tag :search, params[:search] ,:style => "border:1.5px #99cce5 solid;border-radius:10px;width:500px;height:40px"%>
+    <%= submit_tag "검색" , :name => nil ,:style => "border:1.5px #99cce5 solid; border-radius:10px;background-color:#99cce5;height:40px;width:70px;color:white"%>
 <% end %>
+<br>
 <table width = "80%" height = "auto" cellspacing = "0"  class="type10">
   <thead>
     <tr>
       <th>제목</th>
       <th>내용</th>
-      <th>댓글수</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>작성자</th>
     </tr>
   </thead>
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
+      <tr  onClick = " location.href='/posts/<%=post.id%>' ">
         <td width="20%"><%= post.title %></td>
-        <td width="50%"><%= post.content %></td>
-        <td><%= post.comment_threads.count %></td>
-        <td><%= link_to '보기', post %></td>
-        <td><%= link_to '수정', edit_post_path(post) %></td>
-        <td><%= link_to image_tag("delete.png", :border=>0), post, method: :delete, data: { confirm: '정말 지우겠어요?' } %></td>
+        <td width="50%"><%= post.content %>&nbsp;<font color="#99ccff">(<%= post.comment_threads.count %>)</font></td>
+        <td><%= User.find(post.user_id).name %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,3 +34,4 @@
 
 <br>
 </center>
+</div>

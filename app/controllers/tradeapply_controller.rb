@@ -1,6 +1,6 @@
 class TradeapplyController < ApplicationController
     def list
-    @applies = Tradeapply.where("tradepost_id = ?", params[:post_id])
+    @applies = Tradeapply.where("tradepost_id = ?", params[:post_id]).reverse
 end
     
 def new

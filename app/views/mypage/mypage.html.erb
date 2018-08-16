@@ -1,9 +1,61 @@
 <div class="mpage">
+  
+  
+  
+  <div id="mpo" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">나의 게시글 (<%=@mpo.count%>)</h4>
+      </div>
+      <div class="modal-body">
+       <table align="center">
+         <tr>
+           <th>제목</th>
+           <th>내용</th>
+         </tr>
+         <% @mpo.each do |a| %>
+         <tr>
+           <td><%=a.title%></td>
+           <td><%=a.content%></td>
+         </tr>
+         <% end %>
+       </table>
+      </div>
+  
+    </div>
+
+  </div>
+</div>
+  
+  
+  
 <h1> "<%= current_user.name %>" 로 말할 것 같으면 </h1>
+
+
 
 <!-- modal button -->
 <div class="btn-group">
+  
+  <div class="btn-group">
+    <button type="button" class="btn" data-toggle="dropdown"> 자막을 부탁해  <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a data-toggle="modal" data-target="#mpo">나의 게시글</a></li>
+      <li><a data-toggle="modal" data-target="#comment">나의 댓글</a></li>
+    </ul>
+  </div>
  
+  <div class="btn-group">
+    <button type="button" class="btn" data-toggle="dropdown"> 스타디 <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a data-toggle="modal" data-target="#stupo">나의 게시글</a></li>
+      <li><a data-toggle="modal" data-target="#mystuapp">나의 신청</a></li>
+      <li><a data-toggle="modal" data-target="#badstuapp">받은 신청</a></li>
+    </ul>
+  </div>
+  
   <div class="btn-group">
     <button type="button" class="btn" data-toggle="dropdown"> 바꿔나눠 <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
@@ -14,18 +66,20 @@
   </div>
   
   <div class="btn-group">
-    <button type="button" class="btn" data-toggle="dropdown"> 덕질메이트 <span class="caret"></span></button>
+    <button type="button" class="btn" data-toggle="dropdown"> 덕메 사냥 <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
       <li><a data-toggle="modal" data-target="#myapp">나의 신청</a></li>
       <li><a data-toggle="modal" data-target="#badapp">받은 신청</a></li>
     </ul>
   </div>
   
+  <button type="button" class="btn" data-toggle="modal" data-target="#mySc"> 스크랩 </span></button>
+  
   
 </div>
 
 <hr>
-<div style="font-family: 'Nanum Gothic Coding', monospace;">
+<span style="font-family: 'Nanum Gothic Coding', monospace;">
     
     <table align="center" class="maintable">
         <tr style="border:none">
@@ -58,19 +112,18 @@
     </table>
   
 
-    </div>
+    </span>
 
 
 
 <!-- Modal -->
+
 <div id="myapp" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
     <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">내가 한 친구 신청</h4>
+        <h4 class="modal-title">내가 한 친구 신청 (<%=@hanchinchu.count%>)</h4>
       </div>
       <div class="modal-body">
         <% @hanchinchu.each do |a|%>
@@ -82,19 +135,16 @@
         <%end%>
       </div>
     </div>
-
   </div>
 </div>
 
 
 <div id="badapp" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
     <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">내가 받은 친구 신청</h4>
+        <h4 class="modal-title">내가 받은 친구 신청 (<%=@onchinchu.count%>)</h4>
       </div>
       <div class="modal-body">
         <% @onchinchu.each do |a|%>
@@ -116,18 +166,15 @@
             <% end %>
       </div>
     </div>
-
   </div>
 </div>
 
 <div id="tradpo" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
     <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">나의 게시글</h4>
+        <h4 class="modal-title">나의 게시글 (<%=@tradepost.count%>)</h4>
       </div>
       <div class="modal-body">
          <table align="center">
@@ -150,18 +197,15 @@
         </table>
       </div>
     </div>
-
   </div>
 </div>
 
 <div id="mytrade" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
     <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">나의 교환 신청서</h4>
+        <h4 class="modal-title">나의 교환 신청서 (<%=@mytradeapp.count%>)</h4>
       </div>
       <div class="modal-body">
          <table align="center">
@@ -182,18 +226,15 @@
         </table>
       </div>
     </div>
-
   </div>
 </div>
 
 <div id="badtrade" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
     <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">받은 교환신청서</h4>
+        <h4 class="modal-title">받은 교환신청서 (<%=@badtradeapp.count%>)</h4>
       </div>
       <div class="modal-body">
          <table align="center">
@@ -201,6 +242,7 @@
                  <th>해당 교환글</th>
                  <th>제목</th>
                  <th>내용</th>
+                 <th>신청자태</th>
                  <th>수락 상태</th>
              </tr>
         <% @badtradeapp.each do |a|%>
@@ -208,6 +250,7 @@
             <td><%= Tradepost.find(a.tradepost_id).title %></td>
             <td><%= a.title %></td>
             <td><%= a.content %></td>
+            <td><%= a.user_id %></td>
             <td>
                 <% if a.matching %>
                     수락하셨습니다
@@ -220,9 +263,153 @@
         </table>
       </div>
     </div>
-
   </div>
 </div>
+
+
+
+<div id="stupo" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">나의 게시글 (<%=@mystu.count%>)</h4>
+      </div>
+      <div class="modal-body">
+         <table align="center">
+             <tr>
+                 <th>공부 언어</th>
+                 <th>제목</th>
+                 <th>내용</th>
+             </tr>
+        <% @mystu.each do |a|%>
+        <tr>
+            <td><%= a.country %></td>
+            <td><%= a.title %></td>
+            <td><%= a.content %></td>
+        </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="mystuapp" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">나의 스터디 신청서 (<%=@mystuap.count%>)</h4>
+      </div>
+      <div class="modal-body">
+         <table align="center">
+             <tr>
+                 <th>해당 스터디글</th>
+                 <th>제목</th>
+                 <th>내용</th>
+             </tr>
+        <% @mystuap.each do |a|%>
+        <tr>
+            <td><%= Stu.find(a.stu_id).title %></td>
+            <td><%= a.title %></td>
+            <td><%= a.content %></td>
+        </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="badstuapp" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">받은 스터디 신청서(<%=@badstu.count%>)</h4>
+      </div>
+      <div class="modal-body">
+         <table align="center">
+             <tr>
+                 <th>해당 스터디글 제목</th>
+                 <th>제목</th>
+                 <th>내용</th>
+                 <th>신청자</th>
+             </tr>
+        <% @badstu.each do |a|%>
+        <tr>
+            <td><%= Stu.find(a.stu_id).title %></td>
+            <td><%= a.title %></td>
+            <td><%= a.content %></td>
+            <td><%= a.writer %></td>
+        </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="mySc" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">나의 스크랩 ( <%=@scrap.count%> )</h4>
+      </div>
+      <div class="modal-body">
+         <table align="center">
+             <tr>
+                 <th>제목</th>
+                 <th>내용</th>
+                 <th>작성자</th>
+             </tr>
+        <% @scrap.each do |a|%>
+        <tr>
+            <% @po = Tradepost.find(a.tradepost_id) %>
+            <td><%= @po.title %></td>
+            <td><%= @po.content %></td>
+            <td><%= User.find(@po.user_id).name %></td>
+        </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="comment" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">내가 단 댓글</h4>
+      </div>
+      <div class="modal-body">
+        <table align="center">
+             <tr>
+                 <th>해당 글</th>
+                 <th>내용</th>
+             </tr>
+        <% @comm.each do |a|%>
+        <tr>
+            <td><%= Post.find_by(a.parent_id).title %></td>
+            <td><%= a.body %></td>
+        </tr>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 
 
 

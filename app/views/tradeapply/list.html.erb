@@ -17,7 +17,13 @@
     </tr>
     <% @applies.each do |x| %>
     <tr onClick = " location.href='/apply/con/<%=x.id%>/<%=x.tradepost_id%>' ">
-    <td><%= x.matching%></td>
+    <td>
+        <% if x.matching %>
+            수락하셨습니다
+        <% else %>
+            <a href="/apply/accept/<%=x.id%>">교환 수락하기</a>
+        <% end %>
+    </td>
     <td width="350"> <%=x.title%> </td>
     <td> <%=x.content %></td>
     <td><%= x.user_id%></td>

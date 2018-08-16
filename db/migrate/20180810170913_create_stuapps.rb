@@ -4,6 +4,7 @@ class CreateStuapps < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.integer :stu_id
+      t.integer :stupost_writer
       t.text :writer
 
       t.timestamps null: false

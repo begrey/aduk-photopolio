@@ -33,21 +33,21 @@
                    
                        
                        <% if current_user.is_tradeapply? (@post) %>
-                           <a href="/apply/con/<%=Tradeapply.find_by(user_id: current_user.id, tradepost_id: @post.id).id%>/<%=@post.id%>"> <img src="/assets/sinbo.png" width="150px" height="auto"></a>
+                           <a href="/apply/con/<%=Tradeapply.find_by(user_id: current_user.id, tradepost_id: @post.id).id%>/<%=@post.id%>"> <img src="/assets/sinbo.png" width="100px" height="auto"></a>
                        <% else %>
-                            <a href="/apply/new/<%=@post.id%>"> <img src="/assets/sinjak.png" width="150px" height="auto"> </a>
+                            <a href="/apply/new/<%=@post.id%>"> <img src="/assets/sinjak.png" width="100px" height="auto"> </a>
                         <%end%>
                          
                          &nbsp;
                          
                         <% if current_user.is_tradescrap? (@post) %>
                          <a href='/post/<%= @post.id%>/tradescrap' >
-                          <img src="/assets/ns.png" width="150px" height="auto">
+                          <img src="/assets/ns.png" width="100px" height="auto">
                          </a>
   
                        <% else %>
                           <a href='/post/<%= @post.id%>/tradescrap' >
-                          <img src="/assets/scrap.png" width="150px" height="auto">
+                          <img src="/assets/scrap.png" width="100px" height="auto">
                          </a>
   
                        <% end %>

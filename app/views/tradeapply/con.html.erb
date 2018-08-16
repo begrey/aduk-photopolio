@@ -29,7 +29,9 @@
 
 <%if @apply.matching %>
 "교환 수락된 신청서" <br>
-<span class="glyphicon glyphicon-phone"></span> <%= User.find_by(name: @apply.writer).kakao %> 연락해주세요 
+<span class="glyphicon glyphicon-phone"></span> 
+<%if current_user.id != @post.user_id%>  <%=User.find(@post.user_id).kakao %> <%else%> <%=User.find(@apply.user_id).kakao%> <%end %>
+연락해주세요 
 <%else%>
 <%if @post.user_id == current_user.id %>
  <a href="/apply/accept/<%=@apply.id%>">교환 수락하기</a>

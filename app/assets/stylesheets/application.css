@@ -46,7 +46,7 @@ body {
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    background-color: #4682B4;
+    background-color: #99ccff;
     border-radius: 10px;
 }
 
@@ -156,7 +156,7 @@ tbody tr:nth-child(even)  { background-color: #f3e6ff; }
  left:400px;
 }
 
-.stu #f_duck {
+ #f_duck {
  color: Plum;
 }
 
@@ -205,6 +205,7 @@ tbody tr:nth-child(even)  { background-color: #f3e6ff; }
 .mpage table {
     padding:10px;
     background-color:white;
+    width:550px;
 }
 
 .mpage tr {
@@ -215,10 +216,12 @@ tbody tr:nth-child(even)  { background-color: #f3e6ff; }
     padding:10px;
     background-color:white;
     border-bottom: 1px black solid;
+    text-align: center;
 }
 .mpage td {
     padding:10px;
     background-color:white;
+    text-align: center;
 }
 
 

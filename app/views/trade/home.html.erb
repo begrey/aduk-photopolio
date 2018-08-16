@@ -3,7 +3,7 @@
 <div class="tradehome">
 <div class="cont" >
     <center>
-    <H2>교환 공구 게시판 게시글 목록</H2></center>
+    <H2>교환 공구 합시<font id="f_duck">덕</font></H2></center>
   <br><br>
   <center>
 <div >
@@ -18,11 +18,11 @@
     <table>
     <%@posts.each do |x|%>
     <tr onClick = " location.href='/trade/index/<%=x.id%>' ">
-    <td width="75"><font color="gray"><%= x.category %></font></td>
-    <td width="600"> <%= x.title %> </td>
-    <td width="75"><font color="gray"><%= x.user_id%></font></td>
+    <td width="75"><% if x.state %> [완료] <%else%> [진행중] <%end%> </td>
+    <td width="50"><font color="gray"><%= x.category %></font></td>
+    <td width="530"> <%= x.title %> </td>
+    <td width="75"><font color="gray"><%= User.find(x.user_id).name%></font></td>
     <td> <font color="gray"><%=(x.created_at + 32400 ).strftime("%m-%d %H:%M") %></font></td>
-    
     </tr>
     <%end%>
     </table>
@@ -31,9 +31,10 @@
     <table>
     <%@na.each do |x|%>
     <tr onClick = " location.href='/trade/index/<%=x.id%>' ">
-    <td width="75"><font color="gray"><%= x.category %></font></td>
-    <td width="600"> <%= x.title %> </td>
-    <td width="75"><font color="gray"><%= x.user_id%></font></td>
+     <td width="75"><% if x.state %> [완료] <%else%> [진행중] <%end%> </td>
+    <td width="50"><font color="gray"><%= x.category %></font></td>
+    <td width="530"> <%= x.title %> </td>
+    <td width="75"><font color="gray"><%= User.find(x.user_id).name%></font></td>
     <td> <font color="gray"><%=(x.created_at + 32400 ).strftime("%m-%d %H:%M") %></font></td>
     </tr>
     <%end%>
@@ -43,9 +44,10 @@
     <table >
     <%@gong.each do |x|%>
     <tr onClick = " location.href='/trade/index/<%=x.id%>' ">
-    <td width="75"><font color="gray"><%= x.category %></font></td>
-    <td width="600"> <%= x.title %> </td>
-    <td width="75"><font color="gray"><%= x.user_id%></font></td>
+     <td width="75"><% if x.state %> [완료] <%else%> [진행중] <%end%> </td>
+    <td width="50"><font color="gray"><%= x.category %></font></td>
+    <td width="530"> <%= x.title %> </td>
+    <td width="75"><font color="gray"><%= User.find(x.user_id).name%></font></td>
     <td> <font color="gray"><%=(x.created_at + 32400 ).strftime("%m-%d %H:%M") %></font></td>
     </tr>
     <%end%>

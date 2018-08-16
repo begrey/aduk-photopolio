@@ -2,9 +2,9 @@ class User < ActiveRecord::Base
   acts_as_reader
   has_many :new_notifications
   belongs_to :character
-  has_many :post
+  has_many :posts
   has_many :likes
-  has_many :stu
+  has_many :stus
   has_many :stuapps
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     Stuapp.find_by(writer: self.name, stu_id: stu.id).present? 
   end
   
-  has_many :tradepost
+  has_many :tradeposts
   has_many :tradeapplies
   def is_tradeapply?(tradepost) 
   Tradeapply.find_by(user_id: self.id, tradepost_id: tradepost.id).present?

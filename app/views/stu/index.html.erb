@@ -216,7 +216,7 @@ figure.snip1382.hover figcaption p {
 </style>
 <div class="container">
 <center>
-<p id="notice"><%= notice %></p>
+<div style="margin-top:100px">
 
 <h1>공부합시<font id="f_duck">덕</font>.</h1>
 <a href="/stu/new">스터디원 모집</a>
@@ -225,6 +225,7 @@ figure.snip1382.hover figcaption p {
 <figure class="snip1382">
   <img src="/<%= study.country %>.png" alt="sample99" width="350" height="250"/>
   <figcaption>
+    <p><% if study.state %> [모집 완료] <%else%> [모집 진행중] <%end%> </p>
     <h2><%= study.title %></h2><br><br>
     <p><%= study.content %> </p>
     <div class="icons">
@@ -237,4 +238,5 @@ figure.snip1382.hover figcaption p {
   </figcaption>
 </figure>
 <% end %>
+</div>
 </div>

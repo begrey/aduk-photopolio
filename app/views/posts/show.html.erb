@@ -15,7 +15,8 @@
         z-index:-1;
         content:"";
         width:100%;
-        height:100%;
+        height:100%; 
+        background-repeat:no-repeat;
     }
     
   </style>
@@ -23,7 +24,9 @@
 <h4><%= link_to '돌아가기', posts_path %></h4>
 
 <center>
-<div class="bath" style="padding: 100px 100px 200px 100px">
+<div class="bath" style="padding: 100px 100px 200px 0px">
+  
+
 <p>
   <h2>제목</h2>
   <%= @post.title %>
@@ -32,9 +35,22 @@
 <p>
   <h2>내용</h2>
   <%= @post.content %>
+<br><br><br><br>
+<iframe width="560" height="315" src="<%=@post.videourl%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </p>
+<span style="float:right">
+  <br><br><h3>
+    <% if current_user.id == @post.user_id %>
+    <%= link_to '수정', edit_post_path(@post) %>&nbsp;
+    <%= link_to image_tag("delete.png", :border=>0), @post, method: :delete, data: { confirm: '정말 지우겠어요?' } %>
+    <% else %> @<%=User.find_by(id: @post.user_id).name%><%end%></h3>
+ </span>
+
 </div>
+
+
 <p>
+       <br><br>
        <img src="/assets/heart.png" class="img-rounded" width="20" height="20" opacity="20">
       <%= @post.likes.size %> 명이 좋아합니다. 
     </p>
@@ -42,12 +58,12 @@
     <p>
       <% if current_user.is_like? (@post) %>
       <form action='/post/<%= @post.id%>/like' method='post'>
-      <div id="cf"><button><img src="/assets/heart.png" class="top" width="20" height="20" onmouseover="this.src='/assets/noheart.png'" onmouseout="this.src='/assets/heart.png'"></button></div>  
+      <div id="cf"><button style="border:none;background-color:rgb(255, 255, 255, 0)"><img src="/assets/heart.png" class="top" width="25" height="25" onmouseover="this.src='/assets/noheart.png'" onmouseout="this.src='/assets/heart.png'"></button></div>  
       </form>
       
       <% else %>
       <form action='/post/<%= @post.id%>/like' method='post'>
-      <div id="cf"><button><img src="/assets/noheart.png" class="bottom" width="20" height="20" onmouseover="this.src='/assets/heart.png'" onmouseout="this.src='/assets/noheart.png'"></button></div>  
+      <div id="cf"><button style="border:none;background-color:rgb(255, 255, 255, 0)"><img src="/assets/noheart.png" class="bottom" width="25" height="25" onmouseover="this.src='/assets/heart.png'" onmouseout="this.src='/assets/noheart.png'"></button></div>  
       </form>
   
       <% end %>

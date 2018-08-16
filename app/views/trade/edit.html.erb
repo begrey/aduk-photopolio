@@ -10,20 +10,15 @@
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <br>
     <input type="radio" name="category" value="교환" <%if @post.category == "교환" %> checked="checked" <%end%> /> 교환
-             <input type="radio" name="category" value="공구" <%if @post.category == "공구" %> checked="checked" <%end%> /> 공구<br><br>
-             
-             
-             
+             <input type="radio" name="category" value="공구" <%if @post.category == "공구" %> checked="checked" <%end%> /> 공구
+             <br><br>
                 <input type="text" class="form-control" name="title" value="<%=@post.title%>"/>
              <br>
-             
                 <textarea class="form-control" rows="5" id="content" name="content"><%=@post.content%></textarea>
-
              <br>
-             
                 <input type="text"  class="form-control" name="wanted" value="<%=@post.wantitem%>"/>
              <br>
-    
+                <input type="radio" name="state" value="0">진행 중 &nbsp; <input type="radio" name="state" value="1">완료<br>
     
     <button class="btn" id="btn" type="submit"><img class="btn-img" src="/assets/done.png" width="100" height="auto"></button>
 
