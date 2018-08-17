@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/main'
   get 'posts/index'
+  get 'posts/hel'
   
   resources :posts
   post 'post/:post_id/like' => 'posts#like_toggle'

@@ -1,4 +1,4 @@
-<%= form_for(@post) do |f| %>
+<%= form_for(@post,:onchange => 'check(this.post[videourl])') do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -21,10 +21,24 @@
     <%= f.text_area :content, cols: "50", rows: "10" %>
   </div>
   <div class="field">
-    <%= f.label :영상url첨부 %><br>
-    <%= f.text_area :videourl, cols: "100", rows: "2" %>
+    <%= f.label :영상url첨부%><br><font color="gray">(html 소스로 부탁드립니다)</font> <a href="/posts/hel" style="color:#99cce5">URL 첨부 도움말</a><br>
+    <%= f.text_area :videourl, cols: "100", rows: "2" , :onchange => 'check(this)'%>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<script>
+function check(obj) {
+   if(obj.value.indexOf("/embed/") == -1) {
+    obj.style.backgroundColor = '#fbd0d4';
+    alert("정상적인 URL을 입력해주세요\n도움말 참조");
+    obj.focus();
+    return false;
+  }
+  else return true;
+}
+</script>
