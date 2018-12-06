@@ -16,12 +16,14 @@
     <%= f.label :제목 %><br>
     <%= f.text_field :title %>
   </div>
+  <br>
   <div class="field">
     <%= f.label :내용 %><br>
     <%= f.text_area :content, cols: "50", rows: "10" %>
   </div>
+  <br>
   <div class="field">
-    <%= f.label :영상url첨부%><br><font color="gray">(html 소스로 부탁드립니다)</font> <a href="/posts/hel" style="color:#99cce5">URL 첨부 도움말</a><br>
+    <%= f.label :영상url첨부%><br><font color="gray">(html 소스로 부탁드립니다)</font> <a href="/posts/hel" style="color:crimson">URL 첨부 도움말</a><br>
     <%= f.text_area :videourl, cols: "100", rows: "2" , :onchange => 'check(this)'%>
   </div>
   <br>

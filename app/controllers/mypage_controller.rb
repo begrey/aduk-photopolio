@@ -7,8 +7,27 @@ class MypageController < ApplicationController
         @comm = Comment.where("user_id = ?", current_user)
         
         @character = Character.find_by(user_id: current_user.id)
-        @hanchinchu = current_user.mateapplies.reverse
-        @onchinchu = Mateapply.where("partner = ? ", current_user.id).reverse
+        @friend= []
+        @friend2= []
+        @hanchinchu = []
+        @han = current_user.mateapplies.reverse
+        @han.each do |a|
+            if !a.matching 
+                @hanchinchu << a 
+            else
+                @friend << a
+            end
+        end
+        @on = Mateapply.where(partner: current_user.id).reverse
+        @onchinchu = []
+        @on.each do |a|
+            if !a.matching 
+                @onchinchu << a 
+            else
+                @friend2 << a
+            end
+        end
+        
         
         @tradepost = current_user.tradeposts.reverse
         @mytradeapp = current_user.tradeapplies.reverse

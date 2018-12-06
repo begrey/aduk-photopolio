@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20180816152520) do
     t.integer  "stu_id"
     t.integer  "stupost_writer"
     t.text     "writer"
+    t.boolean  "state"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

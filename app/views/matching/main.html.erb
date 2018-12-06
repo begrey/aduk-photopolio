@@ -3,13 +3,17 @@
 </style>
 
 <% if @my_cha == nil%>
-<br><br><br><br><br>
-<h2>덕메사냥은 성격정보를 기반으로 이루어집니다요<br>해당 서비스 사용을 원하시면 성격 정보를 먼저 입력해주세요 </h2> <a href="/character/new">입력하러가기</a>
+<center>
+<br><br><br><br><br><br>
+<img src="/assets/stop.gif" width="350px" height="auto" >
+<h2>덕메사냥은 성격정보가 필요합니다요<br>해당 서비스 사용을 원하시면 성격 정보를 먼저 입력해주세요 </h2>
+<h3><a href="/character/new">>>>입력하러가기<<<</a></h3>
+</center>
 <% else %>
 <div class="container">
     
     
-    <h2>덕메 찾기  <span class="glyphicon glyphicon-search"></span></h2>
+    <center><h2>덕메 찾기  <span class="glyphicon glyphicon-search"></span></h2></center>
     
     <div  class="container" style="border:3px #D8BFD8 solid; width:800px;border-radius:10px;padding:10px">
          <h4>원하는 정보 입력</h4>
@@ -31,16 +35,7 @@
 
 
 
-<hr>
-test용으로 정보 불러옴
-<% @modu.each do |z| %>
-    아이디:  <%= z.user_id%>
-    이름:  <%= User.find_by(id: z.user_id).name %>
-    성격 : <%= z.character%>&nbsp;
-    출생년도 : <%= User.find_by(id: z.user_id).birthyear%>
-    관심 : <%= User.find_by(id: z.user_id).interest%>&nbsp;
-    <br>
-<% end %>
+
 
 <hr>
 

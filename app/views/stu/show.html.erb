@@ -1,3 +1,8 @@
+<head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+    </head>
 <div class="stu">
 <center>
 <div class="image">
@@ -16,7 +21,7 @@
                     <% if current_user.is_stuapp?(@stu) %>
                         <a href="/stuapp/appshow//<%= @stu.id %>"><img src="/stuappok.png"></a>
                     <% else %>
-                        <a href="/stuapp/new/<%= @stu.id %>"><img src="/stuapp.png"></a>
+                        <a href="/stuapp/new/<%= @stu.id %>"><img src="/stuapp.png" onmouseover="this.src='/fishbr.png'" onmouseout="this.src='/stuapp.png'"></a>
                     <% end %>
                 <% end %>
         

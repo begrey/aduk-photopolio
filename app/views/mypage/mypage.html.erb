@@ -29,6 +29,48 @@
 
   </div>
 </div>
+
+  <div id="friend" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content" style="font-family: 'Nanum Gothic Coding', monospace;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">나의 친구덜 (<%=@friend.count + @friend2.count%>)</h4>
+      </div>
+      <div class="modal-body">
+       <table align="center">
+         <tr>
+           <th>이름</th>
+           <th>나이</th>
+           <th>지역</th>
+           <th>카톡아이디</th>
+         </tr>
+         <% @friend.each do |a| %>
+         <tr>
+           <% b = User.find(a.partner) %>
+           <td><%=b.name%></td>
+           <td><%= @time - (b.birthyear.to_i) + 1 %></td>
+           <td><%=b.region%></td>
+           <td><%=b.kakao%></td>
+         </tr>
+         <% end %>
+         <% @friend2.each do |a| %>
+         <tr>
+           <% b = User.find(a.user_id) %>
+           <td><%=b.name%></td>
+           <td><%= @time - (b.birthyear.to_i) + 1 %></td>
+           <td><%=b.region%></td>
+           <td><%=b.kakao%></td>
+         </tr>
+         <% end %>
+       </table>
+      </div>
+  
+    </div>
+
+  </div>
+</div>
   
   
   
@@ -70,6 +112,7 @@
     <ul class="dropdown-menu" role="menu">
       <li><a data-toggle="modal" data-target="#myapp">나의 신청</a></li>
       <li><a data-toggle="modal" data-target="#badapp">받은 신청</a></li>
+      <li><a data-toggle="modal" data-target="#friend">내 친구덜</a></li>
     </ul>
   </div>
   
@@ -128,8 +171,10 @@
       <div class="modal-body">
         <% @hanchinchu.each do |a|%>
             <% us = User.find_by(id: a.partner) %>
-            <a  data-toggle="popover" title="<%= a.partner %>의 자기 소개" data-content="<%= Character.find(us.id).introduce %>"><%= a.partner %></a>
-            에게 매칭상태 : <%= a.matching %></a>
+            <a  data-toggle="popover" title="<%= a.partner %>의 자기 소개" data-content="<%= Character.find_by(user_id: us.id).introduce %>"><%= a.partner %></a>
+            &nbsp;
+            <%= Character.find_by(user_id: us.id).character %>&nbsp;
+            매칭상태 : <% if a.matching %> <%= us.kakao %> <% else %><%= a.matching %><% end %>
             
             <br>
         <%end%>
@@ -149,7 +194,7 @@
       <div class="modal-body">
         <% @onchinchu.each do |a|%>
             <% us = User.find(a.user_id) %>
-            친추 한 사람:  <a  data-toggle="popover" title="<%= a.user_id %>의 자기 소개" data-content="<%= Character.find_by(user_id: a.user_id).introduce %>">
+            친추한 사람:  <a  data-toggle="popover" title="<%= a.user_id %>의 자기 소개" data-content="<%= Character.find_by(user_id: a.user_id).introduce %>">
                 <%= us.name %> </a>
             지역 : <%= us.region%>
             성별 : <%= us.sex%>

@@ -1,16 +1,28 @@
+<div class="container" style="margin-top:100px"> 
 <form action="/character/create" method="post" enctype="multipart/form-data">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     
-   
-    성격 : <input type="checkbox" name="name[character][]" value="소심">소심
-    <input type="checkbox" name="name[character][]" value="투머치토커">투머치토커 
-    <input type="checkbox" name="name[character][]" value="감성">감성 
-    <input type="checkbox" name="name[character][]" value="부끄러">부끄러 
-    <input type="checkbox" name="name[character][]" value="단순">단순 <br>
-    <!-- 성격 모르겠씅ㅁ,ㅎ,ㅇㅁ,ㅎ -->
-    
-    덕메에게 보여줄 자기 소개 :
-    <textarea name="introduce"> </textarea>
+    <div class="introduce" style="margin-top:100px">
+    <h2>CHARACTER</h2>
+    <div class="toggle toggle--neon">
+    <input type="checkbox" id="toggle--neon" class="toggle--checkbox" name="name[character][]" value="소심">
+    <label class="toggle--btn" for="toggle--neon" data-label-on="소심"></label>
+    <input type="checkbox" id="toggle--neon2" class="toggle--checkbox" name="name[character][]" value="투머치토커">
+    <label class="toggle--btn" for="toggle--neon2" data-label-on="투머치토커"></label>
+    <input type="checkbox" id="toggle--neon3" class="toggle--checkbox" name="name[character][]" value="감성">
+    <label class="toggle--btn" for="toggle--neon3" data-label-on="감성"></label>
+    <input type="checkbox" id="toggle--neon4" class="toggle--checkbox" name="name[character][]" value="부끄러"> 
+    <label class="toggle--btn" for="toggle--neon4" data-label-on="부끄러"></label>
+    <input type="checkbox" id="toggle--neon5" class="toggle--checkbox" name="name[character][]" value="단순">
+    <label class="toggle--btn" for="toggle--neon5" data-label-on="단순"></label>
+    <br><br>
+    </div>
 
+    <br><br>
+    <h2>덕메에게 보여줄 자기 소개 :</h2>
+    <input type="text" class="form-control" id="content" name="introduce" rows="4" cols="52">
+    </div>
+    <br>
     <input type="submit" value="작성완료"/>
 </form>
+</div>

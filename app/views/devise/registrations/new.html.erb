@@ -136,24 +136,40 @@
 
   <div class="field">
     <%= f.label :interest %><br />
+    <%= f.radio_button(:interest, "DAY6") %>
+    <%= f.label(:interest, "DAY6") %>
     <%= f.radio_button(:interest, "EXO") %>
-    <%= f.label(:interest_exo, "EXO") %>
+    <%= f.label(:interest, "EXO") %>
     <%= f.radio_button(:interest, "BTS") %>
-    <%= f.label(:interest_bts, "BTS") %>
+    <%= f.label(:interest, "BTS") %>
     <%= f.radio_button(:interest, "BLACKPINK") %>
-    <%= f.label(:interest_BLACKPINK, "BLACKPINK") %>
+    <%= f.label(:interest, "BLACKPINK") %><br>
+    <%= f.radio_button(:interest, "INFINITE") %>
+    <%= f.label(:interest, "INFINITE") %>
     <%= f.radio_button(:interest, "TWICE") %>
-    <%= f.label(:interest_twice, "TWICE") %>
-    <%= f.radio_button(:interest, "APINK") %>
-    <%= f.label(:interest_apink, "APINK") %>
+    <%= f.label(:interest, "TWICE") %>
+    <%= f.radio_button(:interest, "etc") %>
+    <%= f.label(:interest, "기타") %>
+    <input type="text" id="etctext" name="etxtext" onChange="check(this.form)"/>
+    
+    
   </div>
 <br>
 
   <div class="actions">
     <br>
-    <%= f.submit "가입하기" , class:"my_btn" %>
+     <%= f.submit "가입하기" , class:"my_btn"%>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
 </div>
+
+<script>
+function check(form) {
+  var t2 = document.getElementById('user_interest_etc')
+  // alert(t2.checked);
+  if (t2.checked == 1){
+  document.getElementById('user_interest_etc').value = document.getElementById('etctext').value;}
+}
+</script>

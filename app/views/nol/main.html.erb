@@ -1,0 +1,49 @@
+<center>
+  
+    <div style="border: 2px solid black;width:500px;margin-top:100px" id="cb">
+        <div style="background-color:#79a6c2;padding:30px;">
+            <div style="color:white;float:left;">
+                챗봇
+            </div>
+    <br><br><hr><br>
+    
+    
+    <div style="float:left">챗봇</div><br>
+    <div style="background-color:white; padding:10px;margin-top:5px;float:left;border-radius:8px;">
+        나는 챗봇이에오.<br>
+            - 앨범 몇 장 살까요? <br>
+            -말-해 Yes Or No
+    </div>
+    <br><br> <br><br> <br><br> 
+    
+    <% if @your != nil %>
+    <div style="float:right"><%=current_user.name %></div><br>
+    <div style="background-color:gold; padding:10px;margin-top:5px;float:right;border-radius:8px;">
+        <%= @your %> 
+    </div>
+    <br><br> <br><br> <br><br>
+    
+    
+    <div style="float:left">챗봇</div><br>
+    <div style="background-color:white; padding:10px;margin-top:5px;float:left;border-radius:8px;">
+        <% if @your.include? "몇 장"%>
+            <strong><%= @album[0] %>장</strong> 사세여
+        <% else %>
+            <strong><%= @replay[0] %></strong> 
+        <%end%>
+    </div>
+    <%end%>
+     <br><br> <br><br> <br><br>
+    </div>
+    
+    
+    <div  style="background-color:white;padding-top:10px;height:100px">
+        <form method="get" enctype="multipart/form-data">
+            <textarea name="talk" style="border:none;height:70px;width:400px;"></textarea>
+            <input type="submit" class="btn btn-warning" value="보내기"/>
+        </form>
+    </div>
+    
+  </div>
+
+</center>

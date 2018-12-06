@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  root 'home#real'
+  get 'home/real'
+  #놀이방
+  get 'nol/main'
 
   #마이페이지
   get 'mypage/mypage'
@@ -60,8 +64,9 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :installs
   devise_for :users
-  root 'home#main'
   
+  
+  get 'home/introduce'
   get 'home/index'
   get 'home/main'
   get 'posts/index'

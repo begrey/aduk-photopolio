@@ -24,17 +24,18 @@
 </head>
 
 
-<body align="center" style="font-family: 'Jua', sans-serif;overflow:scroll;">
+<body align="center" style="font-family: 'Jua', sans-serif;overflow:scroll;<% if request.fullpath == "/" %>background-color:#DDA0DD<%end%>">
     <br>
-    
-<% if request.fullpath != "/users/sign_in" && request.fullpath != "/users/sign_up" %>
+    <div width="100%"  >
+<% if request.fullpath != "/users/sign_in" && request.fullpath != "/users/sign_up" && request.fullpath != "/"%>
 
   	<!--네비게이션 바-->
  <img id="Image-Maps-Com-image" src="/assets/nono.png" border="0" width="1500" height="400" usemap="#image-maps" />
 <map name="image-maps" id="ImageMapsCom-image-maps">
-<area href="#w" shape="rect" coords="49,324,268,376" style="outline:none;" target="_self"     />
+<area href="/nol/main" shape="rect" coords="638,108,865,268" style="outline:none;" target="_self"     />
+<area href="/home/introduce" shape="rect" coords="49,324,268,376" style="outline:none;" target="_self"     />
 <area href="/home/index" shape="rect" coords="295,326,555,378" style="outline:none;" target="_self"     />
-<area href="/#" shape="rect" coords="580,311,921,392" style="outline:none;" target="_self"     />
+<area href="/home/main" shape="rect" coords="580,311,921,392" style="outline:none;" target="_self"     />
 <area href="/stu/index" shape="rect" coords="941,320,1082,372" style="outline:none;" target="_self"     />
 <area href="/trade/home" shape="rect" coords="1103,324,1266,376" style="outline:none;" target="_self"     />
 <area href="/matching/main" shape="rect" coords="1291,324,1457,376" style="outline:none;" target="_self"     />
@@ -94,9 +95,10 @@
   </div>
 </div>
 <% end %>
+<br>
   <%= yield %>
   <br>
-  
+  </div>
 </body>
 <script>
 $(document).ready(function(){

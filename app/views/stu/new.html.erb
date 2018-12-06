@@ -1,10 +1,34 @@
-<div class="container" style="margin-top:100px"> 
-<h1>스터디 그룹 모집</h1>
+<style>
+    table {
+   width: 700px;
+   padding:30px;
+   text-align:center;
+   background-color:white;
+   margin-top:100px;
+}
 
+.btn {
+    background-color:rgb(255, 255, 255, 0);
+}
+
+td {
+    background-color:white;
+}
+</style>
+
+<div class="container"> 
+<center>
+<table>
+    <tr> 
+        <td style="background-color:#f2f2f2" height="40"> 스터디 그룹 모집</td> 
+    </tr>
+    <tr>
+        <td>
+
+<br>
 <form action="/stu/create" method="post" enctype="multipart/form-data">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     
-    <h2>COUNTRY</h2>
     <select class="form-control" name='country'>
                   <option value='ppap' selected>파푸아뉴기니</option>
                   <option value='japan'>일본</option>
@@ -13,12 +37,14 @@
                   <option value='nag'>남아프리카공화국</option>
                   <option value='mongo'>몽골</option>
     </select><br>
-    <h2>TITLE</h2>
-    <input type="text" class="form-control" id="title" name="title" >
-    <h2>CONTENT</h2>
-    <input type="text" class="form-control" id="content" name="content" >
-    <div style="float:right">
+    
+    <input type="text" class="form-control" id="title" name="title" placeholder="Title"><br>
+    
+    <textarea class="form-control" rows="5" id="content" name="content" placeholder="Content" ></textarea><br>
+    <div style="float:center">
     <button type="submit" class="btn btn-default">제출</button>
-     </div>             
+     </td>
+     </tr>
 </form>
+</center>
 </div>

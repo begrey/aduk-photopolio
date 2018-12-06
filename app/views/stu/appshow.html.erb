@@ -1,15 +1,16 @@
 <div class="container">
-<br><br><br><br>
-<h2><%= @app.writer %>의 신청서</h2>
-<hr>
-Title : <%= @app.title%><br>
-Content : <%= @app.content%>
+    <br><br>
+    <div class="appe">
+<h2><%= @app.writer %>의 신청서</h2><br>
+<h4>제목 : <%= @app.title%></h4>
+<h4>내용 : <%= @app.content%></h4>
 
-<br><br><br>
+<br>
 
 
 <h2><a href="/stuapp/appedit/<%= @app.id %>" style="color:black"> <span class="glyphicon glyphicon-pencil"></span> </a> &nbsp;
 <a href="/stuapp/appdel/<%= @app.id %>" style="color:black"> <span class="glyphicon glyphicon-trash"></span> </a></h2>
 
 <a href="/stu/show/<%= @stu.id %>" style="color:#B0C4DE"><h3><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;글으로</h2></a><br>
+</div>
 </div>
